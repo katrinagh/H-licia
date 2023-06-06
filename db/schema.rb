@@ -10,70 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema[7.0].define(version: 2023_06_06_114039) do
-=======
-ActiveRecord::Schema[7.0].define(version: 2023_06_06_111154) do
->>>>>>> master
+ActiveRecord::Schema[7.0].define(version: 2023_06_06_132803) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "article_orders", force: :cascade do |t|
-    t.integer "quantity"
-    t.bigint "order_id", null: false
-    t.bigint "article_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["article_id"], name: "index_article_orders_on_article_id"
-    t.index ["order_id"], name: "index_article_orders_on_order_id"
-  end
-
-  create_table "articles", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
-    t.string "image_url"
-    t.string "category"
-    t.string "price"
-    t.string "weight"
-    t.bigint "store_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["store_id"], name: "index_articles_on_store_id"
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.string "number"
-    t.string "delivery_time"
-    t.boolean "confirmed", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-  create_table "stores", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
-    t.string "image_url"
-    t.integer "rating"
-    t.time "estimated_delivery_time"
-    t.integer "delivery_fees"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone_number"
-    t.string "email"
-    t.string "delivery_address"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "article_orders", "articles"
-  add_foreign_key "article_orders", "orders"
-  add_foreign_key "articles", "stores"
-  add_foreign_key "orders", "users"
 end

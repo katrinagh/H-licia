@@ -10,11 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_06_111154) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_06_114039) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "article_orders", force: :cascade do |t|
     t.integer "quantity"
-    t.integer "order_id", null: false
-    t.integer "article_id", null: false
+    t.bigint "order_id", null: false
+    t.bigint "article_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_article_orders_on_article_id"
@@ -28,7 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_111154) do
     t.string "category"
     t.string "price"
     t.string "weight"
-    t.integer "store_id", null: false
+    t.bigint "store_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["store_id"], name: "index_articles_on_store_id"
@@ -37,8 +40,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_111154) do
   create_table "orders", force: :cascade do |t|
     t.string "number"
     t.string "delivery_time"
-    t.boolean "cart"
-    t.integer "user_id", null: false
+    t.boolean "confirmed", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"

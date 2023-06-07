@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row">
       <% @stores.each do |store| %>
-        <%= image_tag(store.image_url, class: 'image') %>
+        <%= link_to "Click here", store_path(store) %>
         <div class=text>
           <h3 class=title><%= store.title %></h3>
           <p class="input-fees" name="fees" readonly>Delivery fee: <%= store.delivery_fees %>CHF</p>

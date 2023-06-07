@@ -32,12 +32,12 @@ delivery_fee = %w[2chf 4chf 5chf 7chf]
 puts 'Creating 8 new pharmacies'
 8.times do
   Store.create!(
-    title: titles[rand(1..8)],
-    description: descriptions[rand(1..8)],
-    image_url: images[rand(1..8)],
-    rating: [rand(1..5)],
-    estimated_delivery_time: estimated_delivery_times[rand(1..3)],
-    delivery_fees: delivery_fee[rand(1..4)]
+    title: titles[rand(0..7)],
+    description: descriptions[rand(0..7)],
+    image_url: images[rand(0..7)],
+    rating: rand(1..5),
+    estimated_delivery_time: estimated_delivery_times[rand(0..2)],
+    delivery_fees: delivery_fee[rand(0..3)]
   )
 end
 

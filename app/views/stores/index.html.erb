@@ -1,3 +1,22 @@
+<<<<<<< HEAD
+
+
+<div class="card">
+  <div class="container">
+    <div class="row">
+      <% @stores.each do |store| %>
+        <%= image_tag(store.image_url, class: 'image') %>
+        <div class=text>
+          <h3 class=title><%= store.title %></h3>
+          <p class="input-fees" name="fees" readonly>Delivery fee: <%= store.delivery_fees %>CHF</p>
+          <p class="input-estimated_delivery_time" name="estimated_delivery_time" readonly>Estimated delivery time: <%= store.estimated_delivery_time %></p>
+          <p class="input-rating" name="rating" readonly>Rating: <%= store.rating %>/5</p>
+        </div>
+      <% end %>
+    </div>
+    </div>
+</div>
+=======
 <h1>HELLO</h1>
 <% @stores.each do |store| %>
   <div class="container">
@@ -8,3 +27,4 @@
     <p class="input-estimated_delivery_time" name="estimated_delivery_time" readonly><%= store.estimated_delivery_time%></p>
   </div>
 <% end %>
+>>>>>>> master

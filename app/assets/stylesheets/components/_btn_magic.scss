@@ -1,0 +1,19 @@
+body,
+html {
+  height: 100%;
+}
+
+
+.btn_magic {
+  width: 350px;
+  height: 40px;
+  bottom: 25px;
+  margin: 0 auto;
+
+  /* bottom_magic */
+
+  background: linear-gradient(90.69deg, #2AAF97 27.66%, #2AAF4F 141.42%, rgba(42, 175, 151, 0) 146.04%);
+  filter: drop-shadow(1px 4px 5px rgba(0, 0, 0, 0.25));
+  border-radius: 5px;
+
+}

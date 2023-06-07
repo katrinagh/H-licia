@@ -1,3 +1,32 @@
-<h1>Pages#home</h1>
-    <%= link_to "Login", new_user_session_path %>
-<p>Find me in app/views/pages/home.html.erb</p>
+<!-- logo & title -->
+<div class="d-flex flex-column h-100">
+  <div class="flex-grow-1 justify-content-center align-items-center pt-5" style="bg-image">
+    <div class="d-flex">
+      <%= image_tag("logo_helicia.png") %>
+      <h1>
+        <span>H</span>
+        <span>é</span>
+        <span>l</span>
+        <span>i</span>
+        <span>c</span>
+        <span>i</span>
+        <span>a</span>
+      </h1>
+    </div>
+      <h3 class="pt-5 ml-1">
+      page qui sert a rien du coup!
+      </h3>
+  </div>
+
+<!-- accroche -->
+  <div class="p-3">
+    <h4>
+      Découvrez Hélicia
+    </h4>
+  </div>
+
+<!-- bottom -->
+  <div class="justify-content-center mb-5">
+    <%= link_to "Continue", new_user_session_path, class:"btn_magic fs-3 d-flex justify-content-center text-decoration-none text-white" %>
+  </div>
+</div>

@@ -6,5 +6,4 @@ class Article < ApplicationRecord
   validates :category, presence: true
   validates :price, presence: true
   validates :weight, presence: true
-  validates :store_id, uniqueness: true
 end

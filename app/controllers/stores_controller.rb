@@ -6,7 +6,7 @@ class StoresController < ApplicationController
   end
 
   def show
-    @article = Article.new(store: @store)
+    @articles = @store.articles
   end
 
   private

@@ -1,5 +1,5 @@
 <div class="button_retour">
-    <%=link_to "Back", stores_path, class:"back" %>
+    <%=link_to "Back", stores_path, class: "back" %>
 </div>
 
 <h1> <%= @store.title %> </h1>
@@ -24,6 +24,7 @@
         readonly>
         <%= @store.description %>
     </p>
+    </div>
     <div class="delivery">
         <p>
             Delivery in <%= @store.estimated_delivery_time%>
@@ -41,8 +42,11 @@
         <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
         <% end %>
     </div>
-
-
-    <%= @Article.all.store(params[:id]) %>
-
+    <div>
+        <% @articles.each do |article| %>
+        
+        <%= article.title %>
+        
+        <% end %>
+    </div>
 </div>

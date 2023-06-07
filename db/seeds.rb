@@ -40,6 +40,7 @@ puts 'Creating 8 new pharmacies'
     delivery_fees: delivery_fee[rand(0..3)]
   )
 end
+puts 'pharmacies done'
 
 Store.all.each do |store|
   puts "Creating articles for store #{store.id}"

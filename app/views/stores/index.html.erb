@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 <div class="card">
@@ -15,3 +16,15 @@
     </div>
     </div>
 </div>
+=======
+<h1>HELLO</h1>
+<% @stores.each do |store| %>
+  <div class="container">
+    <%= link_to "Go to this article", store_path(store) %>
+    <p class="input-image" name="image" readonly><%= store.image_url %></p>
+    <p class="input-title" name="title" readonly><%= store.title %></p>
+    <p class="input-fees" name="fees" readonly><%= store.delivery_fees%></p>
+    <p class="input-estimated_delivery_time" name="estimated_delivery_time" readonly><%= store.estimated_delivery_time%></p>
+  </div>
+<% end %>
+>>>>>>> master

@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :user
-  has_many :articles
+  has_many :article_orders
 
   validates :number, presence: true
   validates :number, uniqueness: true

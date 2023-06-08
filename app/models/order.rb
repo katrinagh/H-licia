@@ -6,5 +6,4 @@ class Order < ApplicationRecord
   validates :number, uniqueness: true
   validates :delivery_time, presence: true
   validates :confirmed, presence: true
-  validates :user_id, uniqueness: true
 end

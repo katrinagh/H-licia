@@ -3,13 +3,16 @@
   color: inherit;
   display: block;
 }
+
 .card {
   border: none;
+  background-color: #ffff;
 }
 
 .container {
   width: 390px;
   border: none;
+
 }
 
 .image {
@@ -19,33 +22,43 @@
   height: 180px;
   margin-top: 15px;
   margin-bottom: 5px;
+  border-radius: 8px;
+}
+
+.input-estimated_delivery_time{
+  color: #9a9a9a;
 }
 
 .text {
-  color: rgba($color: #003531, $alpha: 1.0);
   font-size: 16px;
   width: 360px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.title {
-  color: rgba($color: #003531, $alpha: 1.0);
-  font-size: 19px;
-  margin-bottom: 5px;
+.title_circle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .circle {
   width: 20px;
   height: 20px;
-  background-color: #003531;
+  background-color: #bebebe;
   border-radius: 50%;
-  display: flex; /* Add flex display */
-  align-items: center; /* Vertically center align items */
-  justify-content: center; /* Horizontally center align items */
-  margin-left: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .circle p {
-  color: #fff;
+  color: #000000;
   font-size: 16px;
-  margin: 0; /* Reset margin to remove any default spacing */
+  margin: 0;
+}
+
+.title {
+  font-size: 19px;
+  margin: 0;
 }

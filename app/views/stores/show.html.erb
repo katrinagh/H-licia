@@ -64,7 +64,7 @@
   <div class="d-flex justify-content-between">
     <div>
       <% article = @articles.find(82) %>
-      <h3 class="fs-5"><strong><%= article.title %></strong></h3>
+      <h3 class="fs-5"><strong><%= link_to "#{article.title}", store_article_path(article) %></h3>
       <div class="main"><%= article.price %> CHF</div>
       <%= article.description.truncate(24) %>
     </div>
@@ -79,7 +79,7 @@
     <% @articles.each do |article| %>
       <div class="d-flex justify-content-between align-items-start mb-4">
         <div>
-          <h3 class="fs-5 title"><strong><%= article.title %></strong></h3>
+          <h3 class="fs-5 title"><strong><%= link_to "#{article.title}", store_article_path(article) %></strong></h3>
           <div class="main"><%= article.price %> CHF</div>
           <%= article.description.truncate(24) %>
         </div>

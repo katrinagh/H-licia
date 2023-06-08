@@ -14,6 +14,8 @@
 }
 
 .image {
+  width: 100%;
+  object-fit: cover;
   background-size: cover;
   height: 180px;
   margin-top: 15px;
@@ -29,4 +31,22 @@
 .title {
   color: rgba($color: #003531, $alpha: 1.0);
   font-size: 19px;
+  margin-bottom: 5px;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: #003531;
+  border-radius: 50%;
+  display: flex; /* Add flex display */
+  align-items: center; /* Vertically center align items */
+  justify-content: center; /* Horizontally center align items */
+  margin-left: 340px;
+}
+
+.circle p {
+  color: #fff;
+  font-size: 16px;
+  margin: 0; /* Reset margin to remove any default spacing */
 }

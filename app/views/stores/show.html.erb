@@ -63,7 +63,7 @@
 
   <div class="d-flex justify-content-between">
     <div>
-      <% article = @articles.find(82) %>
+      <% article = @articles.last %>
       <h3 class="fs-5"><strong><%= link_to "#{article.title}", store_article_path(article) %></h3>
       <div class="main"><%= article.price %> CHF</div>
       <%= article.description.truncate(24) %>

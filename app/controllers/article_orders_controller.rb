@@ -1,0 +1,2 @@
+class ArticleOrdersController < ApplicationController
+end

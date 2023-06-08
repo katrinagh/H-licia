@@ -69,7 +69,7 @@
       <%= article.description.truncate(24) %>
     </div>
     <div>
-      <%= image_tag("drone1.jpg", width: "120", height: "120", class:"") %>
+      <%= image_tag(article.image_url, width: "120", height: "120" ) %>
     </div>
   </div>
 
@@ -85,7 +85,7 @@
         </div>
         <div>
           <% if (article.image_url) %>
-            <%= article.image_url %>
+            <%= image_tag(article.image_url, width: "120", height: "120" ) %>
           <% else %>
             <%= image_tag("drone1.jpg", width: "120", height: "120") %>
           <% end %>

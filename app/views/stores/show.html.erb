@@ -62,7 +62,7 @@
     <div>
         <% @articles.each do |article| %>
 
-        <%= article.title %>
+        <%= link_to "#{article.title}", store_article_path(article) %>
         <!-- ajouter les autres informations des articles pour la card -->
         <% end %>
     </div>

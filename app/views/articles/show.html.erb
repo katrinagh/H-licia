@@ -1,0 +1,33 @@
+<div class="image_p" style="background-image: url('Mettre image article')">
+    <div class="d-flex justify-content-between">
+        <div class="border border-white rounded-circle fs-6">
+          <%=link_to "Back", store_path %>
+        </div>
+    </div>
+</div>
+
+<div>
+<%= 'Image de la seed, à faire'%>
+</div>
+<div>
+<%= @article.title %>
+</div>
+<div>
+<%= 'Category : '%>
+<%= @article.category %>
+</div>
+<div>
+<%= 'Price : '%>
+<%= @article.price %>
+</div>
+<div>
+<%= 'Description : '%>
+<%= @article.description %>
+</div>
+
+<p> <strong> Insérer image bouton + jauge </strong></p>
+
+<div class="button_order">
+    <%= link_to "Add article to cart", store_article_path %>
+</div>
+

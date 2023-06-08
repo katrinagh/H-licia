@@ -35,7 +35,10 @@
         Free delivery from 15.CHF
       </div>
       <div class="d-flex justify-content-between">
-        <span>Delivery in <%= @store.estimated_delivery_time%></span>
+        <div>
+          <%= image_tag("drone1.jpg", width: "28", height: "28", class:"rounded-circle") %>
+          <span>Delivery in <%= @store.estimated_delivery_time%></span>
+        </div>
         <!-- ajout ici de la fonctionnalité de livrer plus tard -->
         <span>Edit</span>
       </div>

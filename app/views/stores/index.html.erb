@@ -1,17 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
 
-
-<div class="card">
-  <div class="container">
-    <div class="row">
+  <body>
+    <div class="card">
       <% @stores.each do |store| %>
-        <%= image_tag(store.image_url, class: 'image') %>
-        <div class=text>
-          <h3 class=title><%= store.title %></h3>
-          <p class="input-fees" name="fees" readonly>Delivery fee: <%= store.delivery_fees %>CHF</p>
-          <p class="input-estimated_delivery_time" name="estimated_delivery_time" readonly>Estimated delivery time: <%= store.estimated_delivery_time %></p>
-          <p class="input-rating" name="rating" readonly>Rating: <%= store.rating %>/5</p>
-        </div>
+        <a class="container-link" href="">
+          <div class="container">
+            <%= image_tag(store.image_url, class: "image") %>
+            <div class="text">
+              <h3 class="title"><%= store.title %></h3>
+              <p class="input-fees" name="fees" readonly>Delivery fee: <%= store.delivery_fees %>CHF</p>
+              <p class="input-estimated_delivery_time" name="estimated_delivery_time" readonly>Estimated delivery time: <%= store.estimated_delivery_time %></p>
+              <p class="input-rating" name="rating" readonly>Rating: <%= store.rating %>/5</p>
+            </div>
+          </div>
+        </a>
       <% end %>
     </div>
-    </div>
-</div>
+  </body>
+</html>

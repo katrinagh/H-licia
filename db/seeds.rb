@@ -27,7 +27,7 @@ images = ['pharm1.jpg', 'pharm2.jpeg', 'pharm3.jpeg', 'pharm4.jpeg',
 
 estimated_delivery_times = %w[10-15min 15-20min 10-20min]
 
-delivery_fee = %w[2chf 4chf 5chf 7chf]
+delivery_fee = %w[2.00 4.00 5.00 7.00]
 
 puts 'Creating 8 new pharmacies'
 8.times do
@@ -45,13 +45,15 @@ puts 'pharmacies done'
 Store.all.each do |store|
   puts "Creating articles for store #{store.id}"
   store.articles.create!([{
-                           description: 'cpr 500 mg blister 16 pce',
-                           title: 'Dafalgan',
-                           weight: 10,
-                           category: 'Pain',
-                           price: 2.50
-                         },
+                            image_url: 'dafalgan.png',
+                            description: 'cpr 500 mg blister 16 pce',
+                            title: 'Dafalgan',
+                            weight: 10,
+                            category: 'Pain',
+                            price: 2.50
+                          },
                           {
+                            image_url: 'vitafor.png',
                             description: 'Probi-intestis caps 40 pce',
                             title: 'Vitafor',
                             weight: 20,
@@ -59,6 +61,7 @@ Store.all.each do |store|
                             price: 48.95
                           },
                           {
+                            image_url: 'buccotantum.png',
                             description: 'fl spray 30 ml',
                             title: 'Bucco Tantum',
                             weight: 40,
@@ -66,6 +69,7 @@ Store.all.each do |store|
                             price: 14.95
                           },
                           {
+                            image_url: 'merfen.png',
                             description: 'Aqueous solution colorless aqueous sol spr 30 ml',
                             title: 'Merfen',
                             weight: 40,
@@ -73,6 +77,7 @@ Store.all.each do |store|
                             price: 9.40
                           },
                           {
+                            image_url: 'collypan.png',
                             description: 'Dry eyes gtt opht monodos 0.35 ml',
                             title: 'Collypan',
                             weight: 15,
@@ -80,6 +85,7 @@ Store.all.each do |store|
                             price: 20.50
                           },
                           {
+                            image_url: 'perskindol.png',
                             description: 'Classic gel tb 200 ml',
                             title: 'Perskindol',
                             weight: 210,
@@ -87,6 +93,7 @@ Store.all.each do |store|
                             price: 33.95
                           },
                           {
+                            image_url: 'otalgan.png',
                             description: 'Earwax fl 10 ml',
                             title: 'Otalgan',
                             weight: 20,
@@ -94,6 +101,7 @@ Store.all.each do |store|
                             price: 10.20
                           },
                           {
+                            image_url: 'itinerol.png',
                             description: 'Caps blister 10 pc',
                             title: 'Itinerol',
                             weight: 11,
@@ -101,6 +109,7 @@ Store.all.each do |store|
                             price: 14.20
                           },
                           {
+                            image_url: 'bepanthen.png',
                             description: 'Pro Sensiderm cream tb 20 g',
                             title: 'Bepanthen',
                             weight: 30,
@@ -108,6 +117,7 @@ Store.all.each do |store|
                             price: 14.50
                           },
                           {
+                            image_url: 'berocca.png',
                             description: 'cpr eff orange flavor box 60 pce',
                             title: 'Berocca',
                             weight: 55,

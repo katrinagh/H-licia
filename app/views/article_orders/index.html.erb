@@ -1,0 +1,13 @@
+<div class="image_p" style="background-image: url('Mettre image article')">
+    <div class="d-flex justify-content-between">
+        <div class="border border-white rounded-circle fs-6">
+          <%=link_to "Back", stores_path %>
+        </div>
+    </div>
+</div>
+
+<h1>Cart orders  </h1>
+
+<div class="button_history">
+    <%= link_to "Show my commands history", user_orders_path(current_user) %>
+</div>

@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 <!-- Store -->
+=======
+<div class="button_retour">
+    <%=link_to "Back", stores_path, class: "back" %>
+</div>
+
+<h1> <%= @store.title %> </h1>
+
+>>>>>>> master
 <div class="container">
   <div class="row">
     <div class="d-flex">
@@ -45,16 +54,24 @@
     </div>
   </div>
 
-  <!-- articles informations -->
+    <div class="col-sm-8 my-3">
+        <%= form_with url: stores_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+        %>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+        <% end %>
+    </div>
 
-  <div class="col-sm-8 my-3">
-    <%= form_with url: stores_path, method: :get, class: "d-flex" do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Type a keyword"
-    %>
-    <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-    <% end %>
-  </div>
+    <!-- Articles pour chaque store -->
+
+    <div>
+        <% @articles.each do |article| %>
+
+        <%= article.title %>
+        <!-- ajouter les autres informations des articles pour la card -->
+        <% end %>
+    </div>
 </div>

@@ -1,36 +1,58 @@
+<<<<<<< HEAD
+<!-- Store -->
+=======
 <div class="button_retour">
     <%=link_to "Back", stores_path, class: "back" %>
 </div>
 
 <h1> <%= @store.title %> </h1>
 
+>>>>>>> master
 <div class="container">
-
-    <div class="image1">
-    <%=image_tag(@store.image_url, height: '300')%>
+  <div class="row">
+    <div class="d-flex">
+      <%=link_to "Home", stores_path, class:"text-primary p-1 text-decoration-none" %>
+      <p class="p-1">></p>
+      <p class="text-primary p-1"><%= @store.title %></p>
     </div>
 
-    <div class="title">
-
-    <h2> 
+    <!-- changer le css des boutons back et search => bouton blanc avec logo fleche et loupe -->
+    <div class="image_p" style="background-image: url(<%= image_path(@store.image_url) %>)">
+      <div class="d-flex justify-content-between">
+        <div class="border border-white rounded-circle fs-6">
+          <%=link_to "Back", stores_path %>
+        </div>
+        <div class="border border-white rounded-circle fs-6">
+          <%=link_to "Search", "#" %>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h1 class="mt-2 fw-bolder">
         <%= @store.title %>
-    </h2>
-
-    <p> 
-        <%= @store.rating %> 
-    </p>
-
-    <p class="input-description" name="description" 
-        readonly>
-        <%= @store.description %>
-    </p>
+      </h1>
+      <span class="d-flex">
+        <div>
+          <%= image_tag("etoile.jpg", width: "16", height: "16") %>
+          <%= @store.rating %> (95 notes)
+        </div>
+      </span>
+      <span>
+        Ouvert jusqu’a 11:00 PM
+      </span>
+      <div>
+        Free delivery from 15.CHF
+      </div>
+      <div class="d-flex justify-content-between">
+        <div>
+          <%= image_tag("drone1.jpg", width: "28", height: "28", class:"rounded-circle") %>
+          <span>Delivery in <%= @store.estimated_delivery_time%></span>
+        </div>
+        <!-- ajout ici de la fonctionnalité de livrer plus tard -->
+        <span>Edit</span>
+      </div>
     </div>
-    <div class="delivery">
-        <p>
-            Delivery in <%= @store.estimated_delivery_time%>
-        </p>
-        <button class="btn btn-primary"> Modifier </button>
-    </div>
+  </div>
 
     <div class="col-sm-8 my-3">
         <%= form_with url: stores_path, method: :get, class: "d-flex" do %>
@@ -42,11 +64,14 @@
         <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
         <% end %>
     </div>
+
+    <!-- Articles pour chaque store -->
+
     <div>
         <% @articles.each do |article| %>
-        
+
         <%= article.title %>
-        
+        <!-- ajouter les autres informations des articles pour la card -->
         <% end %>
     </div>
 </div>

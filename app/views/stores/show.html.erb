@@ -12,7 +12,7 @@
     <div class="image_p" style="background-image: url(<%= image_path(@store.image_url) %>)">
       <div class="d-flex justify-content-between">
         <div class="border border-white rounded-circle fs-6">
-          <%=link_to "Back", stores_path %>
+          <%=link_to "Back", store_path %>
         </div>
         <div class="border border-white rounded-circle fs-6">
           <%=link_to "Search", "#" %>
@@ -59,12 +59,12 @@
 
   <!-- Articles pour chaque store -->
 
-    <h4 class="mb-4 mt-4" ><strong>1 purchased = 1 offered </strong></h4>
+  <h4 class="mb-4 mt-4" ><strong>1 purchased = 1 offered </strong></h4>
 
   <div class="d-flex justify-content-between">
     <div>
       <% article = @articles.last %>
-      <h3 class="fs-5"><strong><%= link_to "#{article.title}", store_article_path(article) %></h3>
+      <h3 class="fs-5"><strong><%= link_to "#{article.title}", article_path(article) %></h3>
       <div class="main"><%= article.price %> CHF</div>
       <%= article.description.truncate(24) %>
     </div>
@@ -79,7 +79,7 @@
     <% @articles.each do |article| %>
       <div class="d-flex justify-content-between align-items-start mb-4">
         <div>
-          <h3 class="fs-5 title"><strong><%= link_to "#{article.title}", store_article_path(article) %></strong></h3>
+          <h3 class="fs-5 title"><strong><%= link_to "#{article.title}", article_path(article) %></strong></h3>
           <div class="main"><%= article.price %> CHF</div>
           <%= article.description.truncate(24) %>
         </div>

@@ -1,7 +1,7 @@
 <div class="image_p" style="background-image: url('Mettre image article')">
     <div class="d-flex justify-content-between">
         <div class="border border-white rounded-circle fs-6">
-          <%=link_to "Back", store_path %>
+          <%=link_to "Back", store_path(@article.store) %>
         </div>
     </div>
 </div>
@@ -27,7 +27,6 @@
 
 <p> <strong> Insérer image bouton + jauge </strong></p>
 
-<div class="button_order">
-    <%= link_to "Add article to cart", user_article_orders_path(current_user) %>
-</div>
+<%= button_to "Add artile to cart", article_article_orders_path(@article) %>
+
 

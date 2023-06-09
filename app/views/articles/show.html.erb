@@ -2,7 +2,11 @@
   <div class="d-flex">
     <%=link_to "Home", stores_path, class:"text-primary p-1 text-decoration-none" %>
     <p class="p-1">></p>
-    <p class="text-primary p-1"><%= @article.store.title %></p>
+    <p class="text-primary p-1">
+      <%= link_to store_path(@article.store), style: "text-decoration: none" do %>
+        <%= @article.store.title %>
+        <% end %>
+    </p>
     <p class="p-1">></p>
     <p class="text-primary p-1"><%= @article.title %></p>
   </div>
@@ -25,7 +29,7 @@
   </div>
 
   <div class="main mb-3 fw-bolder">
-    <%= @article.price %> CHF
+    <%= sprintf('%.2f', @article.price.to_f) %> CHF
   </div>
 
   <div>

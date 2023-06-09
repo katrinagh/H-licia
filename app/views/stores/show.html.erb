@@ -70,7 +70,7 @@
 
   <h4 class="mb-4 mt-4" ><strong>1 purchased = 1 offered </strong></h4>
   <% article = @articles.last %>
-  <%= link_to store_article_path(article), style: "text-decoration: none" do %>
+  <%= link_to article_path(article), style: "text-decoration: none" do %>
     <div class="d-flex justify-content-between">
       <div>
         <h3 class="title"><strong><span style="color: black;"><%= article.title %></span></strong></h3>

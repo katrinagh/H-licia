@@ -4,12 +4,19 @@ class ArticleOrdersController < ApplicationController
   end
 
   def create
-    @article_order = ArticleOrder.new(article_order_params)
-    @article_order.order = @order
-    if @article_order.save
-      redirect_to list_path(@order)
+    time = Time.now.to_datetime
+    @article = Article.find(params[:article_id])
+    @order = Order.find_or_initialize_by(user: current_user)
+    @order.number ||= SecureRandom.hex(6)
+    @order.delivery_time = time
+    @order.confirmed = false
+    @article_order = ArticleOrder.new(order: @order, article: @article, quantity: 1)
+    if @order.new_record? && @order.save && @article_order.save
+      flash[:notice] = 'Article added to cart'
+      redirect_back fallback_location: @article
     else
-      render :new, status: :unprocessable_entity
+      flash[:error] = 'Failed to create/update order.'
+      redirect_to @article
     end
-  end 
+  end
 end

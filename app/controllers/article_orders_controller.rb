@@ -1,22 +1,49 @@
 class ArticleOrdersController < ApplicationController
-  def index
-    @article_orders = ArticleOrder.all
+  def create
+    # Find associated article and current order
+    chosen_article = Article.find(params[:article_id])
+    current_order = @current_order
+
+    # If order already has this article then find the relevant article_order and iterate quantity otherwise create a new article_order for this article
+    if current_order.articles.include?(chosen_article)
+      # Find the article_order with the chosen_article
+      @article_order = current_order.article_orders.find_by(article_id: chosen_article)
+      # Iterate the article_order's quantity by one
+      @article_order.quantity += 1
+    else
+      @article_order = ArticleOrder.new
+      @article_order.order = current_order
+      @article_order.article = chosen_article
+    end
+
+    # Save and redirect to order show path
+    @article_order.save
+    redirect_to order_path(current_order)
   end
 
-  def create
-    time = Time.now.to_datetime
-    @article = Article.find(params[:article_id])
-    @order = Order.find_or_initialize_by(user: current_user)
-    @order.number ||= SecureRandom.hex(6)
-    @order.delivery_time = time
-    @order.confirmed = false
-    @article_order = ArticleOrder.new(order: @order, article: @article, quantity: 1)
-    if @order.new_record? && @order.save && @article_order.save
-      flash[:notice] = 'Article added to cart'
-      redirect_back fallback_location: @article
-    else
-      flash[:error] = 'Failed to create/update order.'
-      redirect_to @article
-    end
+  def destroy
+    @article_order = ArticleOrder.find(params[:id])
+    @article_order.destroy
+    redirect_to order_path(@current_order)
+  end
+
+  def add_quantity
+    @article_order = ArticleOrder.find(params[:id])
+    @article_order.quantity += 1
+    @article_order.save
+    redirect_to order_path(@current_order)
+  end
+
+  def reduce_quantity
+    @article_order = ArticleOrder.find(params[:id])
+    @article_order.quantity -= 1 if @article_order.quantity > 1
+    @article_order.save
+    redirect_to order_path(@current_order)
+  end
+
+  private
+
+  def article_order_params
+    params.require(:article_order).permit(:quantity, :article_id, :order_id)
   end
 end

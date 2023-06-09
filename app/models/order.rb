@@ -1,15 +1,13 @@
 class Order < ApplicationRecord
-  belongs_to :user
-  has_many :article_orders
+  has_many :article_orders, dependent: :destroy
+  has_many :articles, through: :article_orders
 
-  validates :number, presence: true
-  validates :number, uniqueness: true
-  validates :delivery_time, presence: true
-  validate :unique_for_user
-
-  private
-
-  def unique_for_user
-    errors.add(:user_id, 'There is already a cart for this user') if user.orders.where(confirmed: false).count > 0
+  # LOGIC
+  def sub_total
+    sum = 0
+    article_orders.each do |article_order|
+      sum += article_order.total_price
+    end
+    sum
   end
 end

@@ -3,16 +3,14 @@ Rails.application.routes.draw do
 
   root to: 'stores#index'
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :orders, only: %i[show destroy]
 
-  # Defines the root path route ("/")
+  resources :article_orders, only: %i[create destroy show]
+  post 'article_orders/:id/add' => 'article_orders#add_quantity', as: 'article_order_add'
+  post 'article_orders/:id/reduce' => 'article_orders#reduce_quantity', as: 'article_order_reduce'
 
-  # root "articles#index"
-  resources :stores
-  resources :articles, only: [:show]
+  resources :articles, only: %i[index new]
+  resources :confirmed_orders, only: %i[index show new create]
 
-  resources :orders
-  resources :articles do
-    resources :article_orders, only: [:create]
-  end
+  resources :stores, only: %i[index show]
 end

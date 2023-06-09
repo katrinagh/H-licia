@@ -1,6 +1,9 @@
 class ArticleOrder < ApplicationRecord
-  belongs_to :order
   belongs_to :article
+  belongs_to :order
+  belongs_to :confirmed_order
 
-  validates :quantity, presence: true
+  def total_price
+    quantity * article.price
+  end
 end

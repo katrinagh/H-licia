@@ -1,0 +1,14 @@
+<h2>All articles</h2>
+
+<% @articles.each do |article| %>
+  <p>Name: <%= article.name %>; unit price of <%= number_to_currency(article.price) %></p>
+  <p>
+    <%= link_to "Edit", edit_article_path(article) %> |
+    <%= link_to "Delete", article_path(article), method: :delete, data: {confirm: "Are you sure?"} %>
+    <%= button_to "Add #{article.name} to cart", article_orders_path(:article_id => article.id) %>
+  </p>
+<% end%>
+<!-- New? Voir si enlever -->
+<%= link_to "New article", new_article_path %>
+
+<%= button_to "Add #{article.name} to cart", article_orders_path(:article_id => article.id)%>

@@ -1,0 +1,25 @@
+<%= link_to "Add one", article_order_add_path(id: :article_order), method: :post %>
+<%= link_to "Reduce one", article_order_reduce_path(id: :article_order), method: :post %>
+<%= link_to "Remove item", article_order_path(article_order), method: :delete %>
+
+<h2>order show</h2>
+<ul>
+  <% @order.article_orders.each do |article_order| %>
+    <li>Article: <%= article_order.article.title %>/ Price: <%= number_to_currency(article_order.article.price) %>/ Quantity: <%= article_order.quantity %>/ Total Price: <%= number_to_currency(article_order.total_price) %>
+    <%# # See article_order section below for explanation of article_order links %>
+    <ul>
+      <li>
+        <%= link_to "Add one", article_order_add_path(:id => article_order), method: :post %>
+        <%= link_to "Reduce one", article_order_reduce_path(:id => article_order), method: :post %>
+      </li>
+      <li>
+        <%= link_to "Remove item", article_order_path(article_order), method: :delete %>
+      </li>
+    </ul>
+  <% end %>
+</ul>
+<h3>Sub total: <%= number_to_currency(@order.sub_total) %></h3>
+<%# # See Order section below for explanation of new_order_path %>
+<%= link_to "Proceed to checkout", new_order_path %>
+<br>
+<%= link_to "Empty order", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"}%>

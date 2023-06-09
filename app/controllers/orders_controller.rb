@@ -6,8 +6,4 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
   end
-
-  private
-
-  def order_params; end
 end

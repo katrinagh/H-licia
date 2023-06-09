@@ -8,9 +8,9 @@
   </div>
   <div class="image_p" style="background-image: url(<%= image_path(@article.image_url) %>)">
     <div class="d-flex justify-content-between">
-      <div class="border border-black rounded-circle fs-6">
-        <%=link_to "Back", stores_path %>
-      </div>
+        <div class="border border-white rounded-circle fs-6">
+          <%=link_to "Back", store_path(@article.store) %>
+        </div>
     </div>
   </div>
 
@@ -21,6 +21,8 @@
   <div>
     <h4 class="mt-4 mb-3 fw-bolder"><%= @article.category %></h4>
   </div>
+
+<%= button_to "Add artile to cart", article_article_orders_path(@article) %>
 
   <div class="main mb-3 fw-bolder">
     <%= @article.price %> CHF

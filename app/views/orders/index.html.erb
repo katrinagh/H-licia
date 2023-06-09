@@ -7,3 +7,19 @@
 </div>
 
 <h1>Orders list </h1>
+
+<div class="card">
+  <% @orders.each do |order| %>
+      <div class="container">
+        <%= image_tag(article.image_url, class: "image") %>
+
+        <div class="title_circle">
+          <h3 class="title"><%= article.title %></h3>
+          </div>
+          <div class="text">
+            <p class="input-fees" name="fees" readonly>Delivery fees: <%= store.delivery_fees %> CHF</p>
+            <p class="input-estimated_delivery_time" name="estimated_delivery_time" readonly>~<%= store.estimated_delivery_time %></p>
+          </div>
+      </div>
+  <% end %>
+</div>

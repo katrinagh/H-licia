@@ -7,7 +7,7 @@ class ArticleOrdersController < ApplicationController
     time = Time.now.to_datetime
     @article = Article.find(params[:article_id])
     @order = Order.find_or_initialize_by(user: current_user)
-    @order.number = SecureRandom.hex(6)
+    @order.number ||= SecureRandom.hex(6)
     @order.delivery_time = time
     @order.confirmed = false
     @article_order = ArticleOrder.new(order: @order, article: @article, quantity: 1)

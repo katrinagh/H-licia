@@ -1,19 +1,21 @@
-<div class="card">
-  <% @stores.each do |store| %>
-    <%= link_to  store_path(store) do%>
-      <div class="container">
+<div class="container">
+  <%= image_tag("navbar.png", width: "100%") %>
+  <%= image_tag("card_weather.png", width: "100%") %>
+  <div class="card">
+    <% @stores.each do |store| %>
+      <%= link_to  store_path(store) do%>
         <%= image_tag(store.image_url, class: "image") %>
-    <%end%>
-        <div class="title_circle">
-          <h3 class="title"><%= store.title %></h3>
-            <div class="circle">
-              <p class="input-rating" name="rating" readonly><%= store.rating %></p>
-            </div>
-          </div>
-          <div class="text">
-            <p class="input-fees" name="fees" readonly>Delivery fees: <%= store.delivery_fees %> CHF</p>
-            <p class="input-estimated_delivery_time" name="estimated_delivery_time" readonly>~<%= store.estimated_delivery_time %></p>
-          </div>
+      <%end%>
+      <div class="title_circle">
+        <h3 class="title"><%= store.title %></h3>
+        <div class="circle">
+          <p class="input-rating" name="rating" readonly><%= store.rating %></p>
+        </div>
       </div>
-  <% end %>
+      <div class="text">
+        <p class="input-fees" name="fees" readonly>Delivery fees: <%= store.delivery_fees %> CHF</p>
+        <p class="input-estimated_delivery_time" name="estimated_delivery_time" readonly>~<%= store.estimated_delivery_time %></p>
+      </div>
+    <% end %>
+  </div>
 </div>

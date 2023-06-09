@@ -11,11 +11,13 @@
     <!-- changer le css des boutons back et search => bouton blanc avec logo fleche et loupe -->
     <div class="image_p" style="background-image: url(<%= image_path(@store.image_url) %>)">
       <div class="d-flex justify-content-between">
-        <div class="border border-white rounded-circle fs-6">
-          <%=link_to "Back", store_path %>
+        <div>
+          <%= link_to stores_path, style: "text-decoration: none" do %>
+            <%= image_tag("back.png", width: "45", height: "45", class:"rounded-circle mt-3") %>
+          <% end %>
         </div>
-        <div class="border border-white rounded-circle fs-6">
-          <%=link_to "Search", "#" %>
+        <div>
+          <%= image_tag("loupe.png", width: "45", height: "45", class:"rounded-circle mt-3") %>
         </div>
       </div>
     </div>
@@ -50,8 +52,8 @@
     </div>
   </div>
 
-  <!-- barre de recherche a remplacer plus tard par break_point -->
   <div class="col-sm-8 my-3">
+  <!--
     <%= form_with url: stores_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query,
       params[:query],
@@ -60,6 +62,8 @@
     %>
     <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
     <% end %>
+    -->
+    <%= image_tag("breakpoint.png", width: "100%") %>
   </div>
 
   <!-- Articles pour chaque store -->
@@ -79,9 +83,9 @@
     </div>
   <%end%>
 
-
-  <h4 class="mb-4 mt-4"><strong>Most popular</strong></h4>
-  <%= link_to article_path(article), style: "text-decoration: none" do %>
+<!-- mettre en place le systeme de breakpoint ()-->
+  <h4 class="mb-4 mt-4"><strong>Pain</strong></h4>
+  <%= link_to store_article_path(article), style: "text-decoration: none" do %>
     <% @articles.each do |article| %>
       <div class="d-flex justify-content-between align-items-start mb-4">
         <div>

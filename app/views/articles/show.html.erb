@@ -8,9 +8,11 @@
   </div>
   <div class="image_p" style="background-image: url(<%= image_path(@article.image_url) %>)">
     <div class="d-flex justify-content-between">
-        <div class="border border-white rounded-circle fs-6">
-          <%=link_to "Back", store_path(@article.store) %>
-        </div>
+      <div>
+        <%= link_to stores_path, style: "text-decoration: none" do %>
+            <%= image_tag("back.png", width: "45", height: "45", class:"rounded-circle mt-1") %>
+        <% end %>
+      </div>
     </div>
   </div>
 

@@ -50,12 +50,21 @@
     </div>
   </div>
 
-  <div class="col-sm-8 my-3">
-    <%= image_tag("breakpoint.png", width: "100%") %>
-  </div>
 
 <!-- mettre en place le systeme de breakpoint ()-->
   <% categorys = Article.distinct.pluck(:category) %>
+
+  <div class="mt-5 py-1">
+    <div data-controller="break-point" class= "list-group list-group-horizontal list-group-item-secondary">
+      <p data-action="click->break-point#scrolling_all" class="list-group-item list-group-item-action text-decoration-none">All</p>
+      <p data-action="click->break-point#scrolling_Pain" class="list-group-item list-group-item-action text-decoration-none text-dark"><%=categorys[0]%></p>
+      <p data-action="click->break-point#scrolling_Digestion" class="list-group-item list-group-item-action text-decoration-none text-dark">Digestion</p>
+      <p data-action="click->break-point#scrolling_Coolings" class="list-group-item list-group-item-action text-decoration-none text-dark">Coolings</p>
+      <p data-action="click->break-point#scrolling_Skin_hair" class="list-group-item list-group-item-action text-decoration-none text-dark">Skin & hair</p>
+      <p data-action="click->break-point#scrolling_eyes" class="list-group-item list-group-item-action text-decoration-none text-dark">eyes</p>
+    </div>
+  </div>
+
 
   <h4 class="mb-4 mt-4 fs-1"><strong> <%=categorys[0]%> </strong></h4>
 
@@ -67,10 +76,11 @@
           <div class="main pb-2"><%= sprintf('%.2f', article.price.to_f) %> CHF</div>
           <span class="text-secondary"><%= article.description.truncate(24)%></span>
         </div>
-        <div>
+        <div >
           <%= image_tag(article.image_url, width: "120", height: "120" ) %>
         </div>
       </div>
     <% end %>
   <%end%>
+  <div data-break-point-target="toto">test</div>
 </div>

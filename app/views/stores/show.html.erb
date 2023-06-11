@@ -23,7 +23,7 @@
     </div>
 
     <div>
-      <h1 class="my-3 fw-bolder">
+      <h1 class="my-3 fw-bolder fs-1">
         <%= @store.title %>
       </h1>
       <span class="d-flex">
@@ -64,32 +64,18 @@
     <%= image_tag("breakpoint.png", width: "100%") %>
   </div>
 
-  <!-- Articles pour chaque store -->
-
-  <h4 class="mb-4 mt-4" ><strong>1 purchased = 1 offered </strong></h4>
-  <% article = @articles.last %>
-  <%= link_to article_path(article), style: "text-decoration: none" do %>
-    <div class="d-flex justify-content-between">
-      <div>
-        <h3 class="title"><strong><span style="color: black;"><%= article.title %></span></strong></h3>
-        <div class="main"><%= article.price %> CHF</div>
-        <p><span style="color: grey;"><%= article.description.truncate(24)%></span></p>
-      </div>
-      <div>
-        <%= image_tag(article.image_url, width: "120", height: "120" ) %>
-      </div>
-    </div>
-  <%end%>
-
 <!-- mettre en place le systeme de breakpoint ()-->
-  <h4 class="mb-4 mt-4"><strong>Pain</strong></h4>
+  <% categorys = Article.distinct.pluck(:category) %>
+
+  <h4 class="mb-4 mt-4 fs-1"><strong> <%=categorys[0]%> </strong></h4>
+
   <% @articles.each do |article| %>
     <%= link_to article_path(article), style: "text-decoration: none" do %>
       <div class="d-flex justify-content-between align-items-start mb-4">
         <div>
-          <h3 class="fs-5 title"><strong><span style="color: black;"><%= article.title %></span></strong></h3>
-          <div class="main"><%= sprintf('%.2f', article.price.to_f) %> CHF</div>
-          <p><span style="color: grey;"><%= article.description.truncate(24)%></span></p>
+          <h3 class="fs-4 title text-dark"><%= article.title %></h3>
+          <div class="main pb-2"><%= sprintf('%.2f', article.price.to_f) %> CHF</div>
+          <span class="text-secondary"><%= article.description.truncate(24)%></span>
         </div>
         <div>
           <%= image_tag(article.image_url, width: "120", height: "120" ) %>

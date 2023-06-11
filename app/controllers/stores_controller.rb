@@ -3,6 +3,14 @@ class StoresController < ApplicationController
 
   def index
     @stores = Store.all
+    return unless params[:query].present?
+
+    sql_subquery = <<~SQL
+      stores.title ILIKE :query
+      OR articles.title ILIKE :query
+    SQL
+    # j'aimerais avoir le résultat des pharmacies qui correspond a un article que je recherche.
+    @stores = @stores.joins(:articles).where(sql_subquery, query: "%#{params[:query]}%").distinct
   end
 
   def show

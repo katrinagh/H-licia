@@ -23,11 +23,11 @@
     </div>
 
     <div>
-      <h1 class="mt-3 fw-bolder">
+      <h1 class="my-3 fw-bolder">
         <%= @store.title %>
       </h1>
       <span class="d-flex">
-        <div>
+        <div class="fs-5">
           <%= image_tag("etoile.jpg", width: "16", height: "16") %>
           <%= @store.rating %> (95 notes)
         </div>
@@ -37,7 +37,7 @@
         Open till 11:00 PM
       </span>
 
-      <div>
+      <div class="mt-2">
         Free delivery starting from 15 CHF
       </div>
 
@@ -46,8 +46,6 @@
           <%= image_tag("drone1.jpg", width: "28", height: "28", class:"rounded-circle") %>
           <span>Delivery in <%= @store.estimated_delivery_time%></span>
         </div>
-        <!-- ajout ici de la fonctionnalité de livrer plus tard -->
-        <span class="main">Edit</span>
       </div>
     </div>
   </div>

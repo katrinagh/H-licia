@@ -94,7 +94,8 @@
 
   <% @articles.each do |article| %>
     <%= link_to article_path(article), style: "text-decoration: none" do %>
-      <div class="d-flex justify-content-between align-items-start mb-4">
+      <% if article.category == categorys[0]%>
+        <div class="d-flex justify-content-between align-items-start mb-4">
         <div>
           <h3 class="fs-4 title text-dark"><%= article.title %></h3>
           <div class="main pb-2"><%= sprintf('%.2f', article.price.to_f) %> CHF</div>
@@ -104,22 +105,92 @@
           <%= image_tag(article.image_url, width: "120", height: "120" ) %>
         </div>
       </div>
+      <% else %>
+      <% end %>
     <% end %>
   <%end%>
 
   <!-- (faire l'itération pour la 2eme catégorie skin & hair) -->
-  <h4 class="mb-4 mt-4 fs-1" id="<%=categorys_underscore[1]%>"><strong> <%=categorys[1]%> 2eme</strong></h4>
+  <h4 class="mb-4 mt-4 fs-1" id="<%=categorys_underscore[1]%>"><strong> <%=categorys[1]%> </strong></h4>
 
+  <% @articles.each do |article| %>
+    <%= link_to article_path(article), style: "text-decoration: none" do %>
+      <% if article.category == categorys[1]%>
+        <div class="d-flex justify-content-between align-items-start mb-4">
+        <div>
+          <h3 class="fs-4 title text-dark"><%= article.title %></h3>
+          <div class="main pb-2"><%= sprintf('%.2f', article.price.to_f) %> CHF</div>
+          <span class="text-secondary"><%= article.description.truncate(24)%></span>
+        </div>
+        <div >
+          <%= image_tag(article.image_url, width: "120", height: "120" ) %>
+        </div>
+      </div>
+      <% else %>
+      <% end %>
+    <% end %>
+  <%end%>
 
   <!-- (faire l'itération pour la 3eme catégorie) -->
-  <h4 class="mb-4 mt-4 fs-1" id="<%=categorys_underscore[2]%>"><strong> <%=categorys[2]%> 3eme</strong></h4>
+  <h4 class="mb-4 mt-4 fs-1" id="<%=categorys_underscore[2]%>"><strong> <%=categorys[2]%> </strong></h4>
 
+    <% @articles.each do |article| %>
+    <%= link_to article_path(article), style: "text-decoration: none" do %>
+      <% if article.category == categorys[2]%>
+        <div class="d-flex justify-content-between align-items-start mb-4">
+        <div>
+          <h3 class="fs-4 title text-dark"><%= article.title %></h3>
+          <div class="main pb-2"><%= sprintf('%.2f', article.price.to_f) %> CHF</div>
+          <span class="text-secondary"><%= article.description.truncate(24)%></span>
+        </div>
+        <div >
+          <%= image_tag(article.image_url, width: "120", height: "120" ) %>
+        </div>
+      </div>
+      <% else %>
+      <% end %>
+    <% end %>
+  <%end%>
 
   <!-- (faire l'itération pour la 4eme catégorie) -->
-  <h4 class="mb-4 mt-4 fs-1" id="<%=categorys_underscore[3]%>"><strong> <%=categorys[3]%> 4eme</strong></h4>
+  <h4 class="mb-4 mt-4 fs-1" id="<%=categorys_underscore[3]%>"><strong> <%=categorys[3]%> </strong></h4>
 
+    <% @articles.each do |article| %>
+    <%= link_to article_path(article), style: "text-decoration: none" do %>
+      <% if article.category == categorys[3]%>
+        <div class="d-flex justify-content-between align-items-start mb-4">
+        <div>
+          <h3 class="fs-4 title text-dark"><%= article.title %></h3>
+          <div class="main pb-2"><%= sprintf('%.2f', article.price.to_f) %> CHF</div>
+          <span class="text-secondary"><%= article.description.truncate(24)%></span>
+        </div>
+        <div >
+          <%= image_tag(article.image_url, width: "120", height: "120" ) %>
+        </div>
+      </div>
+      <% else %>
+      <% end %>
+    <% end %>
+  <%end%>
 
   <!-- (faire l'itération pour la 5eme catégorie) -->
-  <h4 class="mb-4 mt-4 fs-1" id="<%=categorys_underscore[4]%>"><strong> <%=categorys[4]%> 5eme</strong></h4>
+  <h4 class="mb-4 mt-4 fs-1" id="<%=categorys_underscore[4]%>"><strong> <%=categorys[4]%> </strong></h4>
 
+    <% @articles.each do |article| %>
+    <%= link_to article_path(article), style: "text-decoration: none" do %>
+      <% if article.category == categorys[4]%>
+        <div class="d-flex justify-content-between align-items-start mb-4">
+        <div>
+          <h3 class="fs-4 title text-dark"><%= article.title %></h3>
+          <div class="main pb-2"><%= sprintf('%.2f', article.price.to_f) %> CHF</div>
+          <span class="text-secondary"><%= article.description.truncate(24)%></span>
+        </div>
+        <div >
+          <%= image_tag(article.image_url, width: "120", height: "120" ) %>
+        </div>
+      </div>
+      <% else %>
+      <% end %>
+    <% end %>
+  <%end%>
 </div>

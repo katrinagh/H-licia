@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
         lng: user.longitude,
         info_window_html: render_to_string(partial:
         'info_window', locals: { user: }),
-        marker_html: render_to_string(partial: 'marker')
+        marker_html: render_to_string(partial: 'marker', locals: { user: })
       }
     end
   end

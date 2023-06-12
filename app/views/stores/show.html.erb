@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="d-flex">
+    <div class="d-flex" id="store">
       <%=link_to "Home", stores_path, class:"text-primary p-1 text-decoration-none" %>
       <p class="p-1">></p>
       <p class="text-primary p-1"><%= @store.title %></p>
@@ -51,26 +51,51 @@
   </div>
 
 
-<!-- mettre en place le systeme de breakpoint ()-->
+<!-- systeme de breakpoint -->
+
   <% categorys = Article.distinct.pluck(:category) %>
 
+  <% categorys_underscore = categorys.map do |element| %>
+    <% element.gsub(" ","_") %>
+  <% end %>
+
   <div class="mt-5 py-1">
-    <div data-controller="break-point" class= "list-group list-group-horizontal list-group-item-secondary">
-      <p data-action="click->break-point#scrolling_all" class="list-group-item list-group-item-action text-decoration-none">All</p>
-      <p data-action="click->break-point#scrolling_Pain" class="list-group-item list-group-item-action text-decoration-none text-dark"><%=categorys[0]%></p>
-      <p data-action="click->break-point#scrolling_Digestion" class="list-group-item list-group-item-action text-decoration-none text-dark">Digestion</p>
-      <p data-action="click->break-point#scrolling_Coolings" class="list-group-item list-group-item-action text-decoration-none text-dark">Coolings</p>
-      <p data-action="click->break-point#scrolling_Skin_hair" class="list-group-item list-group-item-action text-decoration-none text-dark">Skin & hair</p>
-      <p data-action="click->break-point#scrolling_eyes" class="list-group-item list-group-item-action text-decoration-none text-dark">eyes</p>
+    <div class= "d-flex scroll text-nowrap">
+
+      <a href="#store" class="category p-3 border text-dark text-decoration-none border">
+        All
+      </a>
+
+      <a href="#<%=categorys_underscore[0]%>" class="category p-3 border text-dark text-decoration-none border">
+        <%=categorys[0]%>
+      </a>
+
+      <a href="#<%=categorys_underscore[1]%>" class="category p-3 border text-dark text-decoration-none border">
+        <%=categorys[1]%>
+        </a>
+
+      <a href="#<%=categorys_underscore[2]%>" class="category p-3 border text-dark text-decoration-none border">
+        <%=categorys[2]%>
+      </a>
+
+      <a href="#<%=categorys_underscore[3]%>" class="category p-3 border text-dark text-decoration-none border">
+        <%=categorys[3]%>
+      </a>
+
+      <a href="#<%=categorys_underscore[4]%>" class="category p-3 border text-dark text-decoration-none border">
+        <%=categorys[4]%>
+      </a>
     </div>
   </div>
 
 
-  <h4 class="mb-4 mt-4 fs-1"><strong> <%=categorys[0]%> </strong></h4>
+  <!-- (faire l'itération pour la 1er catégorie Cooling) -->
+  <h4 class="mb-4 mt-4 fs-1" id="<%=categorys[0]%>"><strong> <%=categorys[0]%> </strong></h4>
 
   <% @articles.each do |article| %>
     <%= link_to article_path(article), style: "text-decoration: none" do %>
-      <div class="d-flex justify-content-between align-items-start mb-4">
+      <% if article.category == categorys[0]%>
+        <div class="d-flex justify-content-between align-items-start mb-4">
         <div>
           <h3 class="fs-4 title text-dark"><%= article.title %></h3>
           <div class="main pb-2"><%= sprintf('%.2f', article.price.to_f) %> CHF</div>
@@ -80,7 +105,92 @@
           <%= image_tag(article.image_url, width: "120", height: "120" ) %>
         </div>
       </div>
+      <% else %>
+      <% end %>
     <% end %>
   <%end%>
-  <div data-break-point-target="toto">test</div>
+
+  <!-- (faire l'itération pour la 2eme catégorie skin & hair) -->
+  <h4 class="mb-4 mt-4 fs-1" id="<%=categorys_underscore[1]%>"><strong> <%=categorys[1]%> </strong></h4>
+
+  <% @articles.each do |article| %>
+    <%= link_to article_path(article), style: "text-decoration: none" do %>
+      <% if article.category == categorys[1]%>
+        <div class="d-flex justify-content-between align-items-start mb-4">
+        <div>
+          <h3 class="fs-4 title text-dark"><%= article.title %></h3>
+          <div class="main pb-2"><%= sprintf('%.2f', article.price.to_f) %> CHF</div>
+          <span class="text-secondary"><%= article.description.truncate(24)%></span>
+        </div>
+        <div >
+          <%= image_tag(article.image_url, width: "120", height: "120" ) %>
+        </div>
+      </div>
+      <% else %>
+      <% end %>
+    <% end %>
+  <%end%>
+
+  <!-- (faire l'itération pour la 3eme catégorie) -->
+  <h4 class="mb-4 mt-4 fs-1" id="<%=categorys_underscore[2]%>"><strong> <%=categorys[2]%> </strong></h4>
+
+    <% @articles.each do |article| %>
+    <%= link_to article_path(article), style: "text-decoration: none" do %>
+      <% if article.category == categorys[2]%>
+        <div class="d-flex justify-content-between align-items-start mb-4">
+        <div>
+          <h3 class="fs-4 title text-dark"><%= article.title %></h3>
+          <div class="main pb-2"><%= sprintf('%.2f', article.price.to_f) %> CHF</div>
+          <span class="text-secondary"><%= article.description.truncate(24)%></span>
+        </div>
+        <div >
+          <%= image_tag(article.image_url, width: "120", height: "120" ) %>
+        </div>
+      </div>
+      <% else %>
+      <% end %>
+    <% end %>
+  <%end%>
+
+  <!-- (faire l'itération pour la 4eme catégorie) -->
+  <h4 class="mb-4 mt-4 fs-1" id="<%=categorys_underscore[3]%>"><strong> <%=categorys[3]%> </strong></h4>
+
+    <% @articles.each do |article| %>
+    <%= link_to article_path(article), style: "text-decoration: none" do %>
+      <% if article.category == categorys[3]%>
+        <div class="d-flex justify-content-between align-items-start mb-4">
+        <div>
+          <h3 class="fs-4 title text-dark"><%= article.title %></h3>
+          <div class="main pb-2"><%= sprintf('%.2f', article.price.to_f) %> CHF</div>
+          <span class="text-secondary"><%= article.description.truncate(24)%></span>
+        </div>
+        <div >
+          <%= image_tag(article.image_url, width: "120", height: "120" ) %>
+        </div>
+      </div>
+      <% else %>
+      <% end %>
+    <% end %>
+  <%end%>
+
+  <!-- (faire l'itération pour la 5eme catégorie) -->
+  <h4 class="mb-4 mt-4 fs-1" id="<%=categorys_underscore[4]%>"><strong> <%=categorys[4]%> </strong></h4>
+
+    <% @articles.each do |article| %>
+    <%= link_to article_path(article), style: "text-decoration: none" do %>
+      <% if article.category == categorys[4]%>
+        <div class="d-flex justify-content-between align-items-start mb-4">
+        <div>
+          <h3 class="fs-4 title text-dark"><%= article.title %></h3>
+          <div class="main pb-2"><%= sprintf('%.2f', article.price.to_f) %> CHF</div>
+          <span class="text-secondary"><%= article.description.truncate(24)%></span>
+        </div>
+        <div >
+          <%= image_tag(article.image_url, width: "120", height: "120" ) %>
+        </div>
+      </div>
+      <% else %>
+      <% end %>
+    <% end %>
+  <%end%>
 </div>

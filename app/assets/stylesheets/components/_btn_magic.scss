@@ -38,3 +38,16 @@ html {
 .main_grey {
   background-color: #e1dfdf;
 }
+
+.scroll {
+  overflow-x: scroll;
+  background-color: #e1dfdf;
+  border-radius: 5px;
+  border: 1px solid #888888;
+  box-shadow: 3px 3px 7px -5px;
+}
+
+.category {
+  font-weight: 800;
+  margin: 0px 6px;
+}

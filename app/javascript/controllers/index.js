@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import BreakPointController from "./break_point_controller"
+application.register("break-point", BreakPointController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)

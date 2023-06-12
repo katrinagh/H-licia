@@ -2,12 +2,15 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.all
 
-    @users = User.all
+    @users = User.geocoded
 
     @markers = @users.geocoded.map do |user|
       {
         lat: user.latitude,
-        lng: user.longitude
+        lng: user.longitude,
+        info_window_html: render_to_string(partial:
+        'info_window', locals: { user: }),
+        marker_html: render_to_string(partial: 'marker')
       }
     end
   end

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :articles, only: [:show]
 
   resources :orders
+  post 'orders/add'
+  post 'orders/remove'
   resources :articles do
     resources :article_orders, only: [:create]
   end

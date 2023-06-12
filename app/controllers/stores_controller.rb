@@ -2,6 +2,7 @@ class StoresController < ApplicationController
   before_action :set_store, only: :show
 
   def index
+    @render_order = false
     @stores = Store.all
     return unless params[:query].present?
 

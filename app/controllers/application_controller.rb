@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  before_action :set_render_order
+  before_action :initialize_order
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -9,5 +11,20 @@ class ApplicationController < ActionController::Base
 
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: %i[first_name last_name])
+  end
+
+  def set_render_order
+    @render_order = true
+  end
+
+  def initialize_order
+    @order ||= Order.find_by(id: session[:order_id])
+
+    return unless @order.nil?
+
+    @order = Order.new(number: SecureRandom.hex(6), delivery_time: 'time', confirmed: false)
+    @order.user = current_user
+    @order.save
+    session[:order_id] = @order.id
   end
 end

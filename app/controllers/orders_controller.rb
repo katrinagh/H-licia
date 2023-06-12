@@ -11,15 +11,16 @@ class OrdersController < ApplicationController
     @article = Article.find_by(id: params[:id])
     quantity = params[:quantity].to_i
     current_article_item = @order.article_orders.find_by(article_id: @article.id)
-    if current_article_item && quantity > 0
+    if current_article_item && quantity.positive?
       current_article_item.update(quantity:)
+      flash[:notice] = 'Article updated'
     elsif quantity <= 0
       current_article_item.destroy
+      flash[:notice] = 'Article removed from cart'
     else
-      raise
       @order.article_orders.create(article: @article, quantity:)
+      flash[:notice] = 'Article added to cart'
     end
-    redirect_to order_path(@order)
   end
 
   def remove

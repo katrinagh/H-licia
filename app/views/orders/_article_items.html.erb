@@ -19,11 +19,10 @@
 
             <%= form_with(url: orders_remove_path) do |f|%>
                 <%= f.hidden_field :id, value: article_order.id %>
-                <%= f.submit "X" %>
+                <%= f.submit "X", class: "btn-success fs-3 d-flex justify-content-center " %>
             <% end %>
             <strong>Total : </strong>
                 <%= article_order.total %>
         </div>
     </div>
-
 <% end %>

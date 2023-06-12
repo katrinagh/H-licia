@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 
     return unless @order.nil?
 
-    @order = Order.new(number: 34_567, delivery_time: 'time', confirmed: false)
+    @order = Order.new(number: SecureRandom.hex(6), delivery_time: 'time', confirmed: false)
     @order.user = current_user
     @order.save
     session[:order_id] = @order.id

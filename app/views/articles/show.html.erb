@@ -40,8 +40,10 @@
     <%= form_with(url: orders_add_path) do |f|%>
         <%= f.hidden_field :id, value: @article.id %>
         <%= f.number_field :quantity, value: 0, min: 1 %>
-        <%= f.submit "Add to cart", class: "btn_magic fs-3 d-flex justify-content-center " %>
+        <%= f.submit "Add to cart", class: "btn_magic fs-3 d-flex justify-content-center text-white" %>
         <% end %>
+
+        <%= link_to "Go to cart", order_path(@order) %>
 
   <%# <div >
     <%= link_to "Add article to cart", article_article_orders_path(@article), class:"text-decoration-none text-white" %>

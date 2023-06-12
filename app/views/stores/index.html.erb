@@ -1,21 +1,35 @@
 <div class="container">
-  <%= image_tag("navbar.png", width: "100%") %>
-  <%= image_tag("card_weather.png", width: "100%") %>
-  <div class="card">
-    <% @stores.each do |store| %>
+
+  <!-- Search bar intelligente-->
+
+  <div class="row justify-content-center">
+    <div class="col-sm-8 my-3 p-2 bd-highlight">
+      <%= image_tag("loupe2.png", :crop=>"fill", width: "28", height: "28", class:"ms-2 mt-1 position-absolute") %>
+      <%= form_with url: stores_path, method: :get, class: "" do %>
+        <%= text_field_tag :query,
+              params[:query],
+              class: "py-2 form-control rounded-pill main_grey position-arelative ps-5",
+              placeholder: "Pharmacys, Articles, etc..."
+          %>
+      <% end %>
+    </div>
+  </div>
+
+    <!-- resultat de la search_bar -->
+
+  <% @stores.each do |store| %>
+    <div class="card">
       <%= link_to  store_path(store) do%>
         <%= image_tag(store.image_url, class: "image") %>
       <%end%>
-      <div class="title_circle py-1">
-        <h3 class="title"><%= store.title %></h3>
-        <div class="circle">
-          <p class="circle p-3"><%= store.rating %></p>
-        </div>
+      <div class="d-flex justify-content-between ">
+        <h3 class="title mt-1 ="><%= store.title %></h3>
+        <p class="circle p-3"><%= store.rating %></p>
       </div>
       <div class="d-flex justify-content-between">
         <p>Delivery fees: <%= store.delivery_fees %> CHF</p>
         <p class="input-estimated_delivery_time" name="estimated_delivery_time" readonly>~<%= store.estimated_delivery_time %></p>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>

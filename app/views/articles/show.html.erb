@@ -37,11 +37,11 @@
     <p><%= @article.description %></p>
   </div>
 
-  <div class="d-flex justify-content-center jauge_photo mt-5 mb-5">
-    <%= image_tag("jauge_photo.png") %>
-  </div>
+    <%= form_with(url: orders_add_path) do |f|%>
+        <%= f.hidden_field :id, value: @article.id %>
+        <%= f.number_field :quantity, value: 0, min: 1 %>
+        <%= f.submit "Add to cart", class: "btn_magic fs-3 d-flex justify-content-center text-white" %>
+        <% end %>
 
-  <div class= "btn_magic fs-3 d-flex justify-content-center ">
-    <%= link_to "Add article to cart", article_article_orders_path(@article), class:"text-decoration-none text-white" %>
-  </div>
+        <%= link_to "Go to cart", order_path(@order) %>
 </div>

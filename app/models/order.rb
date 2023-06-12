@@ -18,4 +18,5 @@ class Order < ApplicationRecord
 
   def unique_for_user
     errors.add(:user_id, 'There is already a cart for this user') if user.orders.where(confirmed: false).count > 0
+  end
 end

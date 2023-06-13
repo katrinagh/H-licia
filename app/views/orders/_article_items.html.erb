@@ -1,28 +1,35 @@
-<% @order.article_orders.each do |article_order| %>
-    <% article = article_order.article %>
-    <div id= ""> <%= "cart-#{article.id}" %>
-        <div class="d-flex justify-content-between align-items-start mb-4">
-            <div>
-            <h3 class="fs-4 title text-dark"><%= article.title %></h3>
-            <div class="main pb-2"><%= sprintf('%.2f', article.price.to_f) %> CHF</div>
-            <span class="text-secondary"><%= article.description.truncate(24)%></span>
-            </div>
-            <div >
-            <%= image_tag(article.image_url, width: "120", height: "120" ) %>
-            </div>
+<div class="container" data-controller="insert-in-cart">
+    <div >
+        <% @order.article_orders.each do |article_order| %>
+            <% article = article_order.article %>
+                <div class="d-flex justify-content-between align-items-start mb-4" data-insert-in-cart-target="items">
+                    <div>
+                        <h3 class="fs-4 title text-dark"><%= article.title %></h3>
+                        <div class="main pb-2"><%= sprintf('%.2f', article.price.to_f) %> CHF</div>
+                        <span class="text-secondary"><%= article.description.truncate(24)%></span>
+                    </div>
+                    <div >
+                        <%= image_tag(article.image_url, width: "120", height: "120" ) %>
+                    </div>
 
-            <%= form_with(url: orders_add_path) do |f|%>
-                <%= f.hidden_field :id, value: article.id %>
-                <%= f.number_field :quantity, value: article_order.quantity, min: 0 %>
-                <%= f.submit "Add to cart", class: "btn_magic fs-3 d-flex justify-content-center " %>
-            <% end %>
+                    <%= form_with(url: orders_add_path, data: {insert_in_cart_target: "form", action: "submit->insert-in-cart#send"}) do |f|%>
+                        <%= f.hidden_field :id, value: article.id %>
+                        <%= f.number_field :quantity, value: article_order.quantity, min: 0 %>
+                        <%= f.submit "Add to cart", class: "btn_magic fs-3 d-flex justify-content-center " %>
+                    <% end %>
 
-            <%= form_with(url: orders_remove_path) do |f|%>
-                <%= f.hidden_field :id, value: article_order.id %>
-                <%= f.submit "X", class: "btn-success fs-3 d-flex justify-content-center " %>
-            <% end %>
-            <strong>Total : </strong>
-                <%= article_order.total %>
-        </div>
+                    <%= form_with(url: orders_remove_path) do |f|%>
+                        <%= f.hidden_field :id, value: article_order.id %>
+                        <%= f.submit "X", class: "btn-success fs-3 d-flex justify-content-center " %>
+                    <% end %>
+                    <strong>Total : </strong>
+                        <%= sprintf('%.2f',article_order.total.to_f) %>
+                </div>
+                    <div>    
+                        <h5>Total cart amount: <%= sprintf('%.2f', @order.total.to_f) %> </h5>
+                    </div>
+            </div>
+        <% end %>
     </div>
-<% end %>
+</div>
+

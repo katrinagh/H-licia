@@ -21,6 +21,16 @@ class OrdersController < ApplicationController
       @order.article_orders.create(article: @article, quantity:)
       flash[:notice] = 'Article added to cart'
     end
+
+    respond_to do |format|
+      if @order.save
+        format.html { redirect_to order_path(@order) }
+        format.json # Follow the classic Rails flow and look for a create.json view
+      else
+        format.html { render 'orders/show', status: :unprocessable_entity }
+        format.json # Follow the classic Rails flow and look for a create.json view
+      end
+    end
   end
 
   def remove

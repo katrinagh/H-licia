@@ -32,7 +32,7 @@ export default class extends Controller {
   }
 
   #addMarkersToMapOrder() {
-    const popup = new mapboxgl.Popup().setHTML(this.orderMarkerValue.info_window_order_html)
+    const popup = new mapboxgl.Popup().setHTML(this.orderMarkerValue.info_window_html)
     const customMarker = document.createElement("div")
     customMarker.innerHTML = this.orderMarkerValue.marker_html
     new mapboxgl.Marker()

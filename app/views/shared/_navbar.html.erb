@@ -1,35 +1,23 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid"></div>
+  <div class= "all d-flex align-itmes-center">
+
+    <%= link_to stores_path, class: "home" do %>
+        <span class="navbar-home-icon"><i class="home fas fa-home"></i></span>
     <% end %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+    <%= link_to orders_path, class: "helice" do %>
+        <span class="navbar-helice-icon">
+          <%= image_tag("helice.png", class: "helice") %>
+        </span>
+    <% end %>
+
+    <%= link_to order_path(@order), class: "cart" do %>
+        <span class="navbar-cart-icon"><i class="cart fas fa-shopping-cart"></i></span>
+    <% end %>
+
+    <%= link_to user_session_path, class: "menu" do %>
       <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
-          </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+    <% end %>
   </div>
-</div>
+</nav>

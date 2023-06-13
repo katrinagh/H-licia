@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
         lat: @order.latitude,
         lng: @order.longitude,
         info_window_html: render_to_string(partial:
-        'info_window', locals: { order: @order }),
+        'info_window_order', locals: { order: @order }),
         marker_html: render_to_string(partial: 'marker_order', locals: { order: @order })
       }
   end

@@ -7,7 +7,7 @@ class Order < ApplicationRecord
   validates :number, uniqueness: true
   validates :delivery_time, presence: true
 
-  # geocoded_by :address
+  # geocoded_by :addres
   # after_validation :geocode, if: :will_save_change_to_address?
 
   def total

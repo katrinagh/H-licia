@@ -1,9 +1,8 @@
-<div class="container" data-controller="insert-in-cart">
+<div class="container">
     <div >
-        <% i = 0 %>
             <% @order.article_orders.each do |article_order| %>
                 <% article = article_order.article %>
-                    <div class="d-flex justify-content-between align-items-start mb-4" data-insert-in-cart-target="items">
+                    <div class="d-flex justify-content-between align-items-start mb-4">
                         <div>
                             <h3 class="fs-4 title text-dark"><%= article.title %></h3>
                             <div data-insert-in-cart-price-param="<%= article.price.to_f %> " class="main pb-2"><%= sprintf('%.2f', article.price.to_f) %> CHF</div>
@@ -12,26 +11,24 @@
                         <div >
                             <%= image_tag(article.image_url, width: "120", height: "120" ) %>
                         </div>
-                        <div data-insert-in-cart-id-param= <%= i %> >
                             <%= form_with url: orders_add_path do |f|%>
                                 <%= f.hidden_field :id, value: article.id %>
                                 <%= f.number_field :quantity, value: article_order.quantity, min: 0 %>
-                                <%= f.submit "Add to cart", class: "btn_magic fs-3 d-flex justify-content-center", data: {action: "click->insert-in-cart#send", insert_in_cart_target: "form" }  %>
+                                <%= f.submit "Add to cart", class: "btn_magic fs-3 d-flex justify-content-center" %>
                             <% end %>
                         </div>
 
-                        <%= form_with(url: orders_remove_path) do |f|%>
+                        <%= form_with url: orders_remove_path do |f|%>
                             <%= f.hidden_field :id, value: article_order.id %>
                             <%= f.submit "X", class: "btn-success fs-3 d-flex justify-content-center " %>
                         <% end %>
                         <strong  >Total : </strong>
-                            <p data-insert-in-cart-target="total"><%= sprintf('%.2f',article_order.total.to_f) %> </p>
+                            <p><%= sprintf('%.2f',article_order.total.to_f) %> </p>
                     </div>
                         <div>    
                             <h5>Total cart amount: <%= sprintf('%.2f', @order.total.to_f) %> </h5>
                         </div>
                 </div>
-                <% i += 1 %>
             <% end %>
     </div>
 </div>

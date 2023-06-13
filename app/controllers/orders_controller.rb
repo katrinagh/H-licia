@@ -1,6 +1,22 @@
 class OrdersController < ApplicationController
   def index
     @orders = Order.all
+
+    @users = User.geocoded
+
+    @markers = @users.geocoded.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude,
+        info_window_html: render_to_string(partial:
+        'info_window', locals: { user: }),
+        marker_html: render_to_string(partial: 'marker', locals: { user: })
+      }
+    end
+  end
+
+  def show
+    @order = Order.find(params[:id])
   end
 
   def new

@@ -7,5 +7,10 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+<<<<<<< HEAD
 import InsertInCartController from "./insert_in_cart_controller"
 application.register("insert-in-cart", InsertInCartController)
+=======
+import MapController from "./map_controller"
+application.register("map", MapController)
+>>>>>>> master

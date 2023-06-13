@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   has_many :orders
   has_many :articles, through: :orders
+
+  geocoded_by :delivery_address
+  after_validation :geocode, if: :will_save_change_to_delivery_address?
 end

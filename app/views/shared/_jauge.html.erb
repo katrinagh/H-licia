@@ -3,7 +3,7 @@
 
 <% @article.weight %>
 
-<% @order.article_orders.each do |article_order| %>
+<% @order&.article_orders&.each do |article_order| %>
   <% quantity_article = article_order&.quantity || 0 %>
   <% weight_quantity_article = @article.weight * quantity_article %>
   <% pourcentage_weight_article = 100 * weight_quantity_article / weight_max %>

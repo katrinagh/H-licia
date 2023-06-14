@@ -37,14 +37,24 @@
     <p><%= @article.description %></p>
   </div>
 
-    <%= form_with(url: orders_add_path) do |f|%>
-        <%= f.hidden_field :id, value: @article.id %>
+  <%= form_with(url: orders_add_path) do |f|%>
+      <%= f.hidden_field :id, value: @article.id %>
+      <div class="d-flex justify-content-center p-3">
         <%= f.number_field :quantity, value: 0, min: 1 %>
-        <%= f.submit "Add to cart", id: "add-to-cart-btn", class: "btn_magic fs-3 d-flex justify-content-center text-white" %>
-        <% end %>
+      </div>
 
-    </div>
-</div>
+      <!-- La jauge de poid -->
+      <div class="d-flex justify-content-center">
+        <%= render "shared/jauge" %>
+      </div>
+
+      <div class="d-flex justify-content-center p-3">
+        <%= f.submit "Add to cart", class: "btn_magic fs-3 d-flex justify-content-center text-white" %>
+      </div>
+
+      <% end %>
+
+  </div>
 
         <% if @order.id.nil? %>
         <%= "Your cart is empty" %>
@@ -61,10 +71,9 @@
 
       // Show the popup message
       alert('Item added to cart');
-      
+
       // Submit the form
       $(this).closest('form').submit();
     });
   });
 </script>
-

@@ -15,12 +15,12 @@
                         <%= form_with url: orders_add_path, data: {action: "submit->insert-in-cart#send", insert_in_cart_target: "form", insert_in_cart_id_param: i, insert_in_cart_num_param: article_order.quantity } do |f|  %>
                             <%= f.hidden_field :id, value: article.id %>
                             <%= f.number_field :quantity, value: article_order.quantity, min: 0, data: {action: "input->insert-in-cart#retrieveQuantity"} %>
-                            <%= f.submit "Add to cart", class: "btn_magic fs-3 d-flex justify-content-center"  %>
+                            <%= f.submit "Add to cart", class: "btn_magic fs-3 d-flex justify-content-center text-white"  %>
                         <% end %>
 
                         <%= form_with(url: orders_remove_path) do |f|%>
                             <%= f.hidden_field :id, value: article_order.id %>
-                            <%= f.submit "X", class: "btn-success fs-3 d-flex justify-content-center " %>
+                            <%= f.submit "X", class: "btn-danger fs-3 d-flex justify-content-center" %>
                         <% end %>
                         <strong  >Total : </strong>
                             <p data-insert-in-cart-target="total"><%= sprintf('%.2f',article_order.total.to_f) %> </p>

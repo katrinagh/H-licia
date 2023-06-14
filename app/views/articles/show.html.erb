@@ -39,16 +39,19 @@
 
     <%= form_with(url: orders_add_path) do |f|%>
         <%= f.hidden_field :id, value: @article.id %>
-        <%= f.number_field :quantity, value: 0, min: 1 %>
+        <div class="m-2">
+          <%= f.select :quantity, 1..5, {}, class: "select-button"%>
+        </div>
         <%= f.submit "Add to cart", class: "btn_magic fs-3 d-flex justify-content-center text-white" %>
         <% end %>
 
     </div>
 </div>
 
-        <% if @order.id.nil? %>
-        <%= "Your cart is empty" %>
-        <% else %>
-        <%= link_to "Go to cart", order_path(@order) %>
-        <% end %>
-</div>
+        <%# <% if @order.id.nil? %>
+        <%# <%= "Your cart is empty" %>
+        <%# <% else %>
+        <%# <%= link_to "Go to cart", order_path(@order) %>
+        <%# <% end %>
+        <%# :quantity, value: 0, min: 1, %>
+</div> 

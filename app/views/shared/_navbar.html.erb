@@ -9,12 +9,20 @@
         <%= image_tag("helice.png", class: "helice") %>
       </span>
     <% end %>
-    <% if @order.save! %>
-      <%= link_to "Go to cart", order_path(@order) %>
-    <% else %>
+
+
+
+    <% if @order.nil?  %>
       <%= "Your cart is empty" %>
+    <% else %>
+      <%= link_to order_path(@order), class: "cart" do %>
+      <span class="navbar-cart-icon"><i class="cart fas fa-shopping-cart"></i>
+      <% end %>
     <% end %>
-    <span class="navbar-cart-icon"><i class="cart fas fa-shopping-cart"></i></span>
+    
+
+
+    </span>
     <%= link_to user_session_path, class: "menu" do %>
       <span class="navbar-toggler-icon"></span>
     <% end %>

@@ -71,7 +71,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_083125) do
     t.string "first_name"
     t.string "last_name"
     t.string "phone_number"
+<<<<<<< HEAD
     t.string "delivery_address", default: "rue de Lausanne 64, Renens", null: false
+=======
+    t.string "delivery_address"
+>>>>>>> master
     t.float "latitude", default: 46.525021
     t.float "longitude", default: 6.57538
     t.index ["email"], name: "index_users_on_email", unique: true

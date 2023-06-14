@@ -13,8 +13,8 @@
 
 
 
-    <% if @order.nil?  %>
-      <%= "Your cart is empty" %>
+    <% if @order.id.nil?  %>
+      <%= link_to stores_path %>
     <% else %>
       <%= link_to order_path(@order), class: "cart" do %>
       <span class="navbar-cart-icon"><i class="cart fas fa-shopping-cart"></i>

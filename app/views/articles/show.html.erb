@@ -41,6 +41,7 @@
       <%= f.hidden_field :id, value: @article.id %>
       <div class="d-flex justify-content-center p-3">
         <%= f.number_field :quantity, value: 0, min: 1 %>
+<<<<<<< HEAD
       </div>
 
       <!-- La jauge de poid -->
@@ -51,9 +52,37 @@
       <div class="d-flex justify-content-center p-3">
         <%= f.submit "Add to cart", class: "btn_magic fs-3 d-flex justify-content-center text-white" %>
       </div>
+=======
+        <%= f.submit "Add to cart", id: "add-to-cart-btn", class: "btn_magic fs-3 d-flex justify-content-center text-white" %>
+        <% end %>
+>>>>>>> master
 
       <% end %>
 
   </div>
 
+<<<<<<< HEAD
+=======
+        <% if @order.id.nil? %>
+        <%= "Your cart is empty" %>
+        <% else %>
+        <%= link_to "Go to cart", order_path(@order) %>
+        <% end %>
+>>>>>>> master
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#add-to-cart-btn').click(function(e) {
+      e.preventDefault(); // Prevent the default form submission
+
+      // Show the popup message
+      alert('Item added to cart');
+      
+      // Submit the form
+      $(this).closest('form').submit();
+    });
+  });
+</script>
+

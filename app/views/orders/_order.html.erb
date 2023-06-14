@@ -1,9 +1,10 @@
-    <h1>My cart</h1>
+<h1 class="h1">My cart</h1>
 
-    <% if @order.article_orders.count > 0 %>
-        <%= render 'article_items' %>
-    <% else %>
-        <p>Your cart is empty </p>
-    <% end %>
+<% if @order.article_orders.count > 0 %>
+    <%= render 'article_items' %>
+<% else %>
+    <p>Your cart is empty </p>
+<% end %>
 
-    <%= link_to "Store", store_path(@order.article_orders.first.article.store.id) %> 
+<%= link_to "Store", store_path(@order.article_orders.first.article.store.id) %>
+<%= link_to "Checkout", checkout_order_path(@order), class: "help" %>

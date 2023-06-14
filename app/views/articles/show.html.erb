@@ -46,7 +46,7 @@
     </div>
 </div>
 
-        <% if @order.nil? %>
+        <% if @order.id.nil? %>
         <%= "Your cart is empty" %>
         <% else %>
         <%= link_to "Go to cart", order_path(@order) %>

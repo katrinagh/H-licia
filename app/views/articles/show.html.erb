@@ -40,7 +40,7 @@
     <%= form_with(url: orders_add_path) do |f|%>
         <%= f.hidden_field :id, value: @article.id %>
         <%= f.number_field :quantity, value: 0, min: 1 %>
-        <%= f.submit "Add to cart", class: "btn_magic fs-3 d-flex justify-content-center text-white" %>
+        <%= f.submit "Add to cart", id: "add-to-cart-btn", class: "btn_magic fs-3 d-flex justify-content-center text-white" %>
         <% end %>
 
     </div>
@@ -52,3 +52,19 @@
         <%= link_to "Go to cart", order_path(@order) %>
         <% end %>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#add-to-cart-btn').click(function(e) {
+      e.preventDefault(); // Prevent the default form submission
+
+      // Show the popup message
+      alert('Item added to cart');
+      
+      // Submit the form
+      $(this).closest('form').submit();
+    });
+  });
+</script>
+

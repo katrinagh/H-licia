@@ -69,7 +69,7 @@ export default class extends Controller {
 
     const startPoint = [startLng, startLat]; // Point A (coordonnées du point de départ)
     const endPoint = [endLng, endLat]; // Point B (coordonnées du point d'arrivée)
-    const duration = 32000; // Durée de l'animation en millisecondes - 32secondes
+    const duration = 20000; // Durée de l'animation en millisecondes - 32secondes
     const progress = Math.min((timestamp - this.startTime) / duration, 1); // Calculer la progression de l'animation
 
     // Calculer les coordonnées du marqueur en fonction de la progression

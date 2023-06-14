@@ -6,4 +6,4 @@
         <p>Your cart is empty </p>
     <% end %>
 
-    <%= link_to "Stores", stores_path %> 
+    <%= link_to "Store", store_path(@order.article_orders.first.article.store.id) %> 

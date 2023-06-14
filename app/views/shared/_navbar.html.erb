@@ -3,19 +3,27 @@
     <div class= "all d-flex align-itmes-center">
 
     <%= link_to stores_path, class: "home" do %>
-        <span class="navbar-home-icon"><i class="home fas fa-home"></i></span>
+      <span class="navbar-home-icon"><i class="home fas fa-home"></i></span>
     <% end %>
-
     <%= link_to orders_path, class: "helice" do %>
-        <span class="navbar-helice-icon">
-          <%= image_tag("helice.png", class: "helice") %>
-        </span>
+      <span class="navbar-helice-icon">
+        <%= image_tag("helice.png", class: "helice") %>
+      </span>
     <% end %>
 
-    <%= link_to order_path(@order), class: "cart" do %>
-        <span class="navbar-cart-icon"><i class="cart fas fa-shopping-cart"></i></span>
-    <% end %>
 
+
+    <% if @order.nil?  %>
+      <%= "Your cart is empty" %>
+    <% else %>
+      <%= link_to order_path(@order), class: "cart" do %>
+      <span class="navbar-cart-icon"><i class="cart fas fa-shopping-cart"></i>
+      <% end %>
+    <% end %>
+    
+
+
+    </span>
     <%= link_to user_session_path, class: "menu" do %>
       <span class="navbar-toggler-icon"></span>
     <% end %>

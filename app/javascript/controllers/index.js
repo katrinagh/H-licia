@@ -9,6 +9,3 @@ application.register("hello", HelloController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
-
-import OrderSubscriptionController from "./order_subscription_controller"
-application.register("order-subscription", OrderSubscriptionController)

@@ -1,21 +1,20 @@
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid"></div>
   <div class= "all d-flex align-itmes-center">
-
     <%= link_to stores_path, class: "home" do %>
-        <span class="navbar-home-icon"><i class="home fas fa-home"></i></span>
+      <span class="navbar-home-icon"><i class="home fas fa-home"></i></span>
     <% end %>
-
     <%= link_to orders_path, class: "helice" do %>
-        <span class="navbar-helice-icon">
-          <%= image_tag("helice.png", class: "helice") %>
-        </span>
+      <span class="navbar-helice-icon">
+        <%= image_tag("helice.png", class: "helice") %>
+      </span>
     <% end %>
-
-    <%= link_to orders_path, class: "cart" do %>
-        <span class="navbar-cart-icon"><i class="cart fas fa-shopping-cart"></i></span>
+    <% if @order.save! %>
+      <%= link_to "Go to cart", order_path(@order) %>
+    <% else %>
+      <%= "Your cart is empty" %>
     <% end %>
-
+    <span class="navbar-cart-icon"><i class="cart fas fa-shopping-cart"></i></span>
     <%= link_to user_session_path, class: "menu" do %>
       <span class="navbar-toggler-icon"></span>
     <% end %>

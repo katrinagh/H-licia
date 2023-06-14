@@ -20,9 +20,12 @@ export default class extends Controller {
     this.addMarkersToMapUser()
     this.addMarkersToMapOrder()
     this.fitMapToMarkers()
-    // Obtenir l'horodatage de départ
-    this.startTime = performance.now();
-    requestAnimationFrame(this.animateMarker.bind(this));
+
+    setTimeout(() => {
+      // Obtenir l'horodatage de départ
+      this.startTime = performance.now();
+      requestAnimationFrame(this.animateMarker.bind(this));
+    }, 7000);
   }
 
 
@@ -69,12 +72,14 @@ export default class extends Controller {
 
     const startPoint = [startLng, startLat]; // Point A (coordonnées du point de départ)
     const endPoint = [endLng, endLat]; // Point B (coordonnées du point d'arrivée)
-    const duration = 20000; // Durée de l'animation en millisecondes - 32secondes
+    const duration = 25000; // Durée de l'animation en millisecondes - 32secondes
     const progress = Math.min((timestamp - this.startTime) / duration, 1); // Calculer la progression de l'animation
 
+    const relative_progress = easeInOutCubic(progress)
+
     // Calculer les coordonnées du marqueur en fonction de la progression
-    const lng = startPoint[0] + (endPoint[0] - startPoint[0]) * progress;
-    const lat = startPoint[1] + (endPoint[1] - startPoint[1]) * progress;
+    const lng = startPoint[0] + (endPoint[0] - startPoint[0]) * relative_progress;
+    const lat = startPoint[1] + (endPoint[1] - startPoint[1]) * relative_progress;
 
     this.orderMarker.setLngLat([lng, lat]); // Mettre à jour la position du marqueur
 
@@ -87,4 +92,8 @@ export default class extends Controller {
     }
   }
 
+}
+
+function easeInOutCubic(x) {
+  return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
 }

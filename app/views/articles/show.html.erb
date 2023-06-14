@@ -43,27 +43,25 @@
           <%= f.select :quantity, 1..5, {}, class: "select-button"%>
         </div>
         <%= f.submit "Add to cart", class: "btn_magic fs-3 d-flex justify-content-center text-white" %>
-        <% end %>
 
       <!-- La jauge de poid -->
       <div class="d-flex justify-content-center">
         <%= render "shared/jauge" %>
       </div>
 
-      <div class="d-flex justify-content-center p-3">
-        <%= f.submit "Add to cart", class: "btn_magic fs-3 d-flex justify-content-center text-white" %>
-      </div>
+    
+        <% end %>
 
-      <% end %>
+
 
   </div>
 
-        <%# <% if @order.id.nil? %>
-        <%# <%= "Your cart is empty" %>
-        <%# <% else %>
-        <%# <%= link_to "Go to cart", order_path(@order) %>
-        <%# <% end %>
-        <%# :quantity, value: 0, min: 1, %>
+        <% if @order.nil? %>
+        <%= "Your cart is empty" %> 
+        <% else %>
+        <%= link_to "Go to cart", order_path(@order) %>
+        <% end %>
+        
 </div> 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>

@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def initialize_order
-    @order ||= Order.find_by(id: session[:order_id])
+    @order ||= Order.find_by(id: session[:order_id], user_id: current_user.id)
 
     return unless @order.nil?
 

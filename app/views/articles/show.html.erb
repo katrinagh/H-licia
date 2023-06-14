@@ -45,8 +45,18 @@
         <%= f.submit "Add to cart", class: "btn_magic fs-3 d-flex justify-content-center text-white" %>
         <% end %>
 
-    </div>
-</div>
+      <!-- La jauge de poid -->
+      <div class="d-flex justify-content-center">
+        <%= render "shared/jauge" %>
+      </div>
+
+      <div class="d-flex justify-content-center p-3">
+        <%= f.submit "Add to cart", class: "btn_magic fs-3 d-flex justify-content-center text-white" %>
+      </div>
+
+      <% end %>
+
+  </div>
 
         <%# <% if @order.id.nil? %>
         <%# <%= "Your cart is empty" %>
@@ -55,3 +65,17 @@
         <%# <% end %>
         <%# :quantity, value: 0, min: 1, %>
 </div> 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#add-to-cart-btn').click(function(e) {
+      e.preventDefault(); // Prevent the default form submission
+
+      // Show the popup message
+      alert('Item added to cart');
+
+      // Submit the form
+      $(this).closest('form').submit();
+    });
+  });
+</script>

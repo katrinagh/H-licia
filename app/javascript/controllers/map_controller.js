@@ -16,14 +16,15 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
     })
+
     this.addMarkersToMapUser()
     this.addMarkersToMapOrder()
     this.fitMapToMarkers()
-
     // Obtenir l'horodatage de départ
     this.startTime = performance.now();
     requestAnimationFrame(this.animateMarker.bind(this));
   }
+
 
   addMarkersToMapUser() {
     const popup = new mapboxgl.Popup().setHTML(this.userMarkerValue.info_window_html)
@@ -38,8 +39,9 @@ export default class extends Controller {
   addMarkersToMapOrder() {
     const popup = new mapboxgl.Popup().setHTML(this.orderMarkerValue.info_window_html)
     const customMarker = document.createElement("div")
+
     customMarker.innerHTML = this.orderMarkerValue.marker_html
-    new mapboxgl.Marker()
+    this.orderMarker = new mapboxgl.Marker()
       .setLngLat([this.orderMarkerValue.lng, this.orderMarkerValue.lat])
       .setPopup(popup)
       .addTo(this.map)
@@ -74,15 +76,14 @@ export default class extends Controller {
     const lng = startPoint[0] + (endPoint[0] - startPoint[0]) * progress;
     const lat = startPoint[1] + (endPoint[1] - startPoint[1]) * progress;
 
-    console.log(this.orderMarkerValue)
-    //this.orderMarkerValue.setLngLat([lng, lat]); // Mettre à jour la position du marqueur
+    this.orderMarker.setLngLat([lng, lat]); // Mettre à jour la position du marqueur
 
-    this.orderMarkerValue.addTo(this.map); // S'assurer que le marqueur est ajouté à la carte
+    this.orderMarker.addTo(this.map); // S'assurer que le marqueur est ajouté à la carte
 
     // Vérifier si l'animation doit se poursuivre
     if (progress < 1) {
       // Demander le prochain frame de l'animation
-      requestAnimationFrame(animateMarker);
+      requestAnimationFrame(this.animateMarker.bind(this));
     }
   }
 

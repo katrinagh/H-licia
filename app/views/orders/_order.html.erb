@@ -1,9 +1,16 @@
-    <h1>My cart</h1>
-
-    <% if @order.article_orders.count > 0 %>
-        <%= render 'article_items' %>
-    <% else %>
-        <p>Your cart is empty </p>
-    <% end %>
-
-    <%= link_to "Store", store_path(@order.article_orders.first.article.store.id) %> 
+<h1 class="h1">My cart</h1>
+<% if @order.article_orders.count > 0 %>
+  <% @order.article_orders.each do |article| %>
+    <div class="article-container">
+      <h5 class="title"><%= article.article.title %></h5>
+      <div class="image"><%= image_tag(article.article.image_url, width: "120", height: "120" ) %></div>
+      <span class="text-secondary"><%= article.article.description.truncate(40)%></span>
+      <p class="price"><%= sprintf('%.2f', article.article.price.to_f) %> CHF</p>
+    </div>
+  <% end %>
+  <p>Total : <%= @order.total %> </p>
+<% else %>
+    <p>Your cart is empty </p>
+<% end %>
+<%= link_to "Store", store_path(@order.article_orders.first.article.store.id) %>
+<%= link_to "Checkout", checkout_order_path(@order), class: "help" %>

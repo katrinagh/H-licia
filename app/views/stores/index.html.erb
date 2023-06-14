@@ -1,3 +1,7 @@
+<!-- debug button logout-->
+  <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+
+
 <div class="container">
 
   <!-- Search bar intelligente-->
@@ -25,11 +29,11 @@
       <div class="d-flex justify-content-between ">
         <h4 class="title mt-1 ="><%= store.title %></h4>
         <span class="d-flex align-middle">
-        <div class="fs-5 align-top">
-          <%= image_tag("etoile.jpg", width: "16", height: "16") %>
-          <span class="fs-6"><%= store.rating %> (<%= rand(10..120)%> notes)</span>
-        </div>
-      </span>
+          <div class="fs-5 align-top">
+            <%= image_tag("etoile.jpg", width: "16", height: "16") %>
+            <span class="fs-6"><%= store.rating %> (<%= rand(10..120)%> notes)</span>
+          </div>
+        </span>
       </div>
       <div class="d-flex justify-content-between">
         <p>Delivery fees: <%= store.delivery_fees %> CHF</p>

@@ -1,0 +1,37 @@
+<%= link_to stores_path, style: "text-decoration: none" do %>
+  <%= image_tag("back.png", width: "45", height: "45", class:"rounded-circle mt-3") %>
+<% end %>
+
+<h2>Delivery Address</h2>
+<input class="adress" type="text" name="myAddress" placeholder="My address">
+
+<div class="line"></div>
+
+<% order_total = @order.article_orders.sum(&:total) %>
+<% fee = @order.article_orders.first.article.store.delivery_fees %>
+<h4>Total Price of Articles: <span style="color: black;"> <%= order_total %></span> CHF</h4>
+<p>Delivery fee:  <span style="color: black;"> <%= fee %></span> CHF</p>
+<h4>Total Price: <span style="color: black;"><%= order_total + fee %></span> CHF</h4>
+
+
+
+<div class="line"></div>
+
+<h2>Payment</h2>
+<div class="cards">
+  <p>VISA: **** **** **** 2424</p>
+<%# <ul class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+    <%= image_tag("add.png", alt: "Add", class: "dropdown-icon") %>
+  <%# </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+    <input class="Name" type="text" name="Name" placeholder="First name">
+    <input class="last-name" type="text" name="last-name" placeholder="Last Name">
+    <input class="expiration-date" type="text" name="expiration-date" placeholder="Expiration date">
+    <input class="credit-card-number" type="text" name="credit-card-number" placeholder="Credit card number">
+    <input class="CVV" type="text" name="CVV" placeholder="CVV">
+  </div>
+</ul>  %>
+</div>
+
+<button type="submit" class="btn btn_magic fs-3 d-flex justify-content-center text-white">Validate</button>

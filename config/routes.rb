@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   resources :stores
   resources :articles, only: [:show]
 
-  resources :orders
+  resources :orders do
+    member do
+      get :checkout
+    end
+  end
   post 'orders/add'
   post 'orders/remove'
   resources :articles do

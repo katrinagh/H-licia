@@ -56,11 +56,11 @@
 
   </div>
 
-        <%# <% if @order.nil? %>
-        <%# <%= "Your cart is empty" %> 
-        <%# <% else %>
-        <%# <%= link_to "Go to cart", order_path(@order) %>
-        <%# <% end %>
+        <% if @order.nil? %>
+        <%= "Your cart is empty" %> 
+        <% else %>
+        <%= link_to "Go to cart", order_path(@order) %>
+        <% end %>
         
 </div> 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -1,3 +1,6 @@
+<div class="container">
+  <div class="row">
+
 <% if @order.id == nil %>
   <%= link_to stores_path, style: "text-decoration: none" do %>
     <%= image_tag("back.png", width: "45", height: "45", class:"rounded-circle mt-3") %>
@@ -21,13 +24,31 @@
 <h4>Total Price : <span style="color: black;"><%= sprintf('%.2f', total.to_f) %></span> CHF</h4>
 
 
-<div class="line"></div>
+    <%= link_to stores_path, style: "text-decoration: none" do %>
+      <%= image_tag("back.png", width: "45", height: "45", class:"rounded-circle mt-3") %>
+    <% end %>
 
-<h2>Payment</h2>
-<div class="cards">
-  <p>VISA: **** **** **** 2424</p>
+    <h2>Delivery Address</h2>
+    <input class="adress" type="text" name="myAddress" placeholder="My address">
 
-  <%= render 'credit_card' %>
+    <div class="line"></div>
+
+    <% order_total = @order.article_orders.sum(&:total) %>
+    <% fee = @order.article_orders.first.article.store.delivery_fees %>
+    <% total = order_total + fee %>
+    <h4>Total Price of Articles : <span style="color: black;"> <%= sprintf('%.2f', order_total.to_f) %></span> CHF</h4>
+    <p>Delivery fees :  <span style="color: black;"> <%= sprintf('%.2f', fee.to_f) %></span> CHF</p>
+    <h4>Total Price : <span style="color: black;"><%= sprintf('%.2f', total.to_f) %></span> CHF</h4>
+
+
+    <div class="line"></div>
+
+    <%= render 'credit_card' %>
+
+    </div>
+
+    <%= link_to "Validate", confirmation_order_path, class:"btn btn_magic fs-3 d-flex justify-content-center text-white" %>
+
+
+  </div>
 </div>
-
-<%= link_to "Validate", confirmation_order_path, class:"btn btn_magic fs-3 d-flex justify-content-center text-white" %>

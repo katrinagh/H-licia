@@ -1,16 +1,18 @@
-<div class="d-flex justify-content-center align-item-center py-3 mb-5 card_congratulation">
+<div class="d-flex justify-content-center align-item-center py-3 card_confirmed_order">
   <h4 class="fs-3 fw-bold fst-italic">Confirmation order</h4>
 </div>
 
 <div class="container d-flex justify-content-center">
   <div class="row">
-
+    <%= link_to stores_path, style: "text-decoration: none" do %>
+      <%= image_tag("back.png", width: "45", height: "45", class:"rounded-circle mt-3") %>
+    <% end %>
     <div class= " p-3 mb-5 card_congratulation">
       <div class="">
         <div style="height: 100px;" class= "d-flex justify-content-between align-middle mt-3 mb-3">
-          <%= image_tag("feu_dartifice1.png", width: "55", height: "55", class:"") %>
-          <span class="">Congratulation</span>
-          <%= image_tag("feu_dartifice1.png", width: "55", height: "55", class:"") %>
+          <%= image_tag("feuxx.png", width: "90", height: "90", class:"") %>
+          <h4 class="">Congratulation</h4>
+          <%= image_tag("feuxx.png", width: "90", height: "90", class:"") %>
         </div>
         <p>You have finished your order !</p>
         <p class="pb-1"><strong>Order :</strong></p>

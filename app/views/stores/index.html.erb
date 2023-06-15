@@ -31,12 +31,12 @@
         <span class="d-flex align-middle">
           <div class="fs-5 align-top">
             <%= image_tag("etoile.jpg", width: "16", height: "16") %>
-            <span class="fs-6"><%= store.rating %> (<%= rand(10..120)%> notes)</span>
+            <span class="fs-6"><%= sprintf('%.2f', store.rating) %> (<%= rand(60..120)%> notes)</span>
           </div>
         </span>
       </div>
       <div class="d-flex justify-content-between">
-        <p>Delivery fees: <%= store.delivery_fees %> CHF</p>
+        <p>Delivery fees: <%= sprintf('%.2f', store.delivery_fees) %> CHF</p>
         <p class="input-estimated_delivery_time" name="estimated_delivery_time" readonly>~<%= store.estimated_delivery_time %></p>
       </div>
     </div>

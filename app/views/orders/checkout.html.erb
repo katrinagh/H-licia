@@ -16,9 +16,9 @@
 <% order_total = @order.article_orders.sum(&:total) %>
 <% fee = @order.article_orders.first.article.store.delivery_fees %>
 <% total = order_total + fee %>
-<h4>Total Price of Articles: <span style="color: black;"> <%= sprintf('%.2f', order_total.to_f) %></span> CHF</h4>
-<p>Delivery fee:  <span style="color: black;"> <%= sprintf('%.2f', fee.to_f) %></span> CHF</p>
-<h4>Total Price: <span style="color: black;"><%= sprintf('%.2f', total.to_f) %></span> CHF</h4>
+<h4>Total Price of Articles : <span style="color: black;"> <%= sprintf('%.2f', order_total.to_f) %></span> CHF</h4>
+<p>Delivery fees :  <span style="color: black;"> <%= sprintf('%.2f', fee.to_f) %></span> CHF</p>
+<h4>Total Price : <span style="color: black;"><%= sprintf('%.2f', total.to_f) %></span> CHF</h4>
 
 
 <div class="line"></div>
@@ -27,6 +27,7 @@
 <div class="cards">
   <p>VISA: **** **** **** 2424</p>
 
+  <%= render 'credit_card' %>
 </div>
 
 <%= link_to "Validate", confirmation_order_path, class:"btn btn_magic fs-3 d-flex justify-content-center text-white" %>

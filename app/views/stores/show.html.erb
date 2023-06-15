@@ -32,7 +32,7 @@
       <span class="d-flex">
         <div class="fs-5">
           <%= image_tag("etoile.jpg", width: "16", height: "16") %>
-          <%= @store.rating %> (95 notes)
+          <%= sprintf('%.2f',@store.rating) %> (95 notes)
         </div>
       </span>
 

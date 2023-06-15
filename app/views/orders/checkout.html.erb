@@ -1,5 +1,11 @@
-<%= link_to stores_path, style: "text-decoration: none" do %>
-  <%= image_tag("back.png", width: "45", height: "45", class:"rounded-circle mt-3") %>
+<% if @order.id == nil %>
+  <%= link_to stores_path, style: "text-decoration: none" do %>
+    <%= image_tag("back.png", width: "45", height: "45", class:"rounded-circle mt-3") %>
+  <% end %>
+<% else %>
+  <%= link_to order_path(@order), style: "text-decoration: none" do %>
+    <%= image_tag("back.png", width: "45", height: "45", class:"rounded-circle mt-3") %>
+  <% end %>
 <% end %>
 
 <h2>Delivery Address</h2>
@@ -17,25 +23,11 @@
 
 <div class="line"></div>
 
-<%= render 'credit_card' %>
+<h2>Payment</h2>
+<div class="cards">
+  <p>VISA: **** **** **** 2424</p>
 
-
-
-
-
-
-<%# <ul class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false">
-    <%= image_tag("add.png", alt: "Add", class: "dropdown-icon") %>
-  <%# </a>
-  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-    <input class="Name" type="text" name="Name" placeholder="First name">
-    <input class="last-name" type="text" name="last-name" placeholder="Last Name">
-    <input class="expiration-date" type="text" name="expiration-date" placeholder="Expiration date">
-    <input class="credit-card-number" type="text" name="credit-card-number" placeholder="Credit card number">
-    <input class="CVV" type="text" name="CVV" placeholder="CVV">
-  </div>
-</ul>  %>
+  <%= render 'credit_card' %>
 </div>
 
 <%= link_to "Validate", confirmation_order_path, class:"btn btn_magic fs-3 d-flex justify-content-center text-white" %>

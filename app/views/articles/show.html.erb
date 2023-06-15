@@ -20,19 +20,16 @@
     </div>
   </div>
 
-  <div>
-    <h1 class="mt-5 fw-bolder"><%= @article.title %></h1>
-  </div>
-
-  <div>
-    <h4 class="mt-4 mb-3 fw-bolder"><%= @article.category %></h4>
+  <div class="titles_category_article">
+    <h1 class="title_article fw-bolder"><%= @article.title %></h1>
+    <h4 class="category_article fw-bolder"><%= @article.category %></h4>
   </div>
 
   <div class="main mb-3 fw-bolder">
     <%= sprintf('%.2f', @article.price.to_f) %> CHF
   </div>
 
-  <div>
+  <div class="description_article">
     <strong><h4>Description:</h4></strong>
     <p><%= @article.description %></p>
   </div>
@@ -49,7 +46,7 @@
         <%= render "shared/jauge" %>
       </div>
 
-    
+
         <% end %>
 
 
@@ -57,12 +54,12 @@
   </div>
 
         <% if @order.nil? %>
-        <%= "Your cart is empty" %> 
+        <%= "Your cart is empty" %>
         <% else %>
         <%= link_to "Go to cart", order_path(@order) %>
         <% end %>
-        
-</div> 
+
+</div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(document).ready(function() {

@@ -1,0 +1,49 @@
+<div class="d-flex justify-content-center align-item-center py-3 mb-5 card_congratulation">
+  <h4 class="fs-3 fw-bold fst-italic">Confirmation order</h4>
+</div>
+
+<div class="container d-flex justify-content-center">
+  <div class="row">
+
+    <div class= " p-3 mb-5 card_congratulation">
+      <div class="">
+        <div style="height: 100px;" class= "d-flex justify-content-between align-middle mt-3 mb-3">
+          <%= image_tag("feu_dartifice1.png", width: "55", height: "55", class:"") %>
+          <span class="">Congratulation</span>
+          <%= image_tag("feu_dartifice1.png", width: "55", height: "55", class:"") %>
+        </div>
+        <p>You have finished your order !</p>
+        <p class="pb-1"><strong>Order :</strong></p>
+        <div class="d-flex justify-content-between mb-3">
+          <div>
+          <p>Perform the:</p>
+          <p>Number:</p>
+          <p>Total price:</p>
+          <p>Payment method:</p>
+          </div>
+          <div>
+
+          <% order_total = @order.article_orders.sum(&:total) %>
+          <% fee = @order.article_orders.first.article.store.delivery_fees %>
+
+          <p class="d-flex justify-content-end"> <%= DateTime.now %> </p>
+          <p class="d-flex justify-content-end">#<%= @order.number%></p>
+          <p class="d-flex justify-content-end"><%= order_total + fee %> CHF</p>
+          <p class="d-flex justify-content-end">Visa</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+    <div style="width: 100%; height: 600px;"
+      data-controller="map"
+      data-map-user-marker-value="<%= @marker_user.to_json %>"
+      data-map-order-marker-value="<%= @marker_order.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+
+  </div>
+</div>

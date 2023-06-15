@@ -5,8 +5,10 @@
     <%= link_to stores_path, class: "home" do %>
       <span class="navbar-home-icon"><i class="home fas fa-home"></i></span>
     <% end %>
-    <%= link_to orders_path, class: "helice" do %>
-      <span class="navbar-helice-icon">
+
+    <% if @order.confirmed %>
+      <%= link_to confirmation_order_path, class: "helice" do %>
+        <span class="navbar-helice-icon">
         <%= image_tag("helice.png", class: "helice") %>
       </span>
     <% end %>

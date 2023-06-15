@@ -26,7 +26,6 @@ export default class extends Controller {
     }, 7000);
   }
 
-
   addMarkersToMapUser() {
     const popup = new mapboxgl.Popup().setHTML(this.userMarkerValue.info_window_html)
     const customMarker = document.createElement("div")
@@ -40,13 +39,11 @@ export default class extends Controller {
   addMarkersToMapOrder() {
     const popup = new mapboxgl.Popup().setHTML(this.orderMarkerValue.info_window_html)
     const customMarker = document.createElement("div")
-
     customMarker.innerHTML = this.orderMarkerValue.marker_html
-    this.orderMarker = new mapboxgl.Marker()
+    this.orderMarker = new mapboxgl.Marker(customMarker)
       .setLngLat([this.orderMarkerValue.lng, this.orderMarkerValue.lat])
       .setPopup(popup)
       .addTo(this.map)
-
   }
 
   fitMapToMarkers() {

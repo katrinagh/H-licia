@@ -1,5 +1,7 @@
-.image_p {
-  background-size: cover;
+.image_article {
+  height: 220px;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
 }
 
@@ -36,4 +38,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.articles_button{
+  width: 75%;
+  border: 1px solid rgb(48 ,140 ,124);
+}
+
+.articles_select{
+  height: 40px;
+  border: 1px solid rgb(48 ,140 ,124);
+}
+
+.jauge_articles{
+  margin-bottom: 15px;
 }

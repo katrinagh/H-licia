@@ -1,4 +1,4 @@
-.adress{
+.adress {
   display: flex;
   justify-content: center;
   width: 90%;
@@ -8,38 +8,39 @@
   margin: auto;
 }
 
-.cards{
+.cards {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-.img{
+.img {
   height: 30px;
   width: 30px;
 }
 
-.image-text{
-  color: rgb(48 ,140 ,124);
+.image-text {
+  color: rgb(48, 140, 124);
 }
 
-.btn{
+.btn {
   width: 90%;
   margin-bottom: 10px;
 }
 
-p{
+p {
   margin-left: 10px;
 }
 
-h2, h4{
-  color: rgb(48 ,140 ,124);
+h2,
+h4 {
+  color: rgb(48, 140, 124);
   margin-left: 10px;
 }
 
-.line{
-  background-color:  rgb(48 ,140 ,124);
+.line {
+  background-color: rgb(48, 140, 124);
   width: 100%;
   height: 2px;
   margin-top: 15px;
@@ -48,4 +49,11 @@ h2, h4{
 
 .dropdown-toggle::after {
   display: none;
+}
+
+.card_congratulation {
+  background: #e6e6e6;
+  border: 1px solid grey;
+  box-shadow: 4px 5px 6px -5px;
+
 }

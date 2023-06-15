@@ -10,7 +10,7 @@
     <p class="p-1">></p>
     <p class="text-primary p-1"><%= @article.title %></p>
   </div>
-  <div class="image_p" style="background-image: url(<%= image_path(@article.image_url) %>)">
+  <div class="image_article" style="background-image: url(<%= image_path(@article.image_url) %>)">
     <div class="d-flex justify-content-between">
       <div>
         <%= link_to store_path(@article.store), style: "text-decoration: none" do %>
@@ -34,31 +34,11 @@
     <p><%= @article.description %></p>
   </div>
 
-    <%= form_with(url: orders_add_path) do |f|%>
-        <%= f.hidden_field :id, value: @article.id %>
-        <div class="buttons_articles"></div>
-        <%= f.submit "Add to cart", id: "add-to-cart-btn", class: "btn_magic fs-3 d-flex justify-content-center text-white" %>
-        <div class="m-2">
-          <%= f.select :quantity, 1..5, {}, class: "select-button"%>
-        </div>
-      <!-- La jauge de poid -->
-      <div class="d-flex justify-content-center">
-        <%= render "shared/jauge" %>
-      </div>
-
-
-        <% end %>
-
-
-
+<!-- La jauge de poid -->
+  <div class="jauge_articles d-flex justify-content-center">
+    <%= render "shared/jauge" %>
   </div>
-
-        <% if @order.nil? %>
-        <%= "Your cart is empty" %>
-        <% else %>
-        <%= link_to "Go to cart", order_path(@order) %>
-        <% end %>
-
+  </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -74,3 +54,19 @@
     });
   });
 </script>
+
+<%= form_with(url: orders_add_path) do |f| %>
+  <%= f.hidden_field :id, value: @article.id %>
+  <div class="buttons_articles">
+    <%= f.submit "Add to cart", id: "add-to-cart-btn", class: "articles_button btn_magic fs-3 d-flex justify-content-center text-white" %>
+    <div class="m-2">
+      <%= f.select :quantity, 1..5, {}, class: "articles_select select-button" %>
+    </div>
+  </div>
+<% end %>
+
+<% if @order.nil? %>
+  <%= "Your cart is empty" %>
+<% else %>
+  <%= link_to "Go to cart", order_path(@order) %>
+<% end %>

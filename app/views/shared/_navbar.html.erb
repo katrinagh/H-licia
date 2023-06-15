@@ -1,28 +1,31 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-sm sticky-sm-bottom">
   <div class="container-fluid">
-    <div class= "all d-flex align-itmes-center">
+    <div class="all d-flex align-items-center">
 
     <%= link_to stores_path, class: "home" do %>
       <span class="navbar-home-icon"><i class="home fas fa-home"></i></span>
     <% end %>
 
     <% if @order.confirmed %>
-      <%= link_to confirmation_order_path, class: "helice" do %>
+      <%= link_to confirmation_order, class: "helice" do %>
         <span class="navbar-helice-icon">
         <%= image_tag("helice.png", class: "helice") %>
-      </span>
+        </span>
+      <% end %>
+    <% else %>
+      <button class= "helice, disabled"> </button>
     <% end %>
 
 
 
-    <% if @order.nil?  %>
-      <%= link_to stores_path %>
+    <% if @order.id.nil?  %>
+      <button class= "navbar-cart-icon, disabled"> </button>
     <% else %>
       <%= link_to order_path(@order), class: "cart" do %>
       <span class="navbar-cart-icon"><i class="cart fas fa-shopping-cart"></i>
       <% end %>
     <% end %>
-    
+
 
 
     <%# </span>

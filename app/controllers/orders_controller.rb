@@ -59,7 +59,5 @@ class OrdersController < ApplicationController
     ArticleOrder.find_by(id: params[:id]).destroy
   end
 
-  def checkout
-
-  end
+  def checkout; end
 end

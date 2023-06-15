@@ -1,0 +1,31 @@
+<% weight_max = 600 %>
+<% weight_actuel = 0 %>
+
+<% @article.weight %>
+
+<% @order&.article_orders&.each do |article_order| %>
+  <% quantity_article = article_order&.quantity || 0 %>
+  <% weight_quantity_article = @article.weight * quantity_article %>
+  <% pourcentage_weight_article = 100 * weight_quantity_article / weight_max %>
+  <% weight_actuel += pourcentage_weight_article %>
+<% end %>
+
+
+<% if (weight_actuel >= 100) %>
+  <div class="progress w-100">
+    <div class="progress-bar bg-danger" role="progressbar" style="width: <%= weight_actuel%>%" aria-valuenow="<%= weight_actuel%>" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+<% elsif (weight_actuel <= 99 && weight_actuel >= 75) %>
+  <div class="progress w-100">
+    <div class="progress-bar bg-warning" role="progressbar" style="width: <%= weight_actuel%>%" aria-valuenow="<%= weight_actuel%>" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+<% elsif (weight_actuel <= 75 && weight_actuel >= 50) %>
+  <div class="progress w-100">
+    <div class="progress-bar bg-info" role="progressbar" style="width: <%= weight_actuel%>%" aria-valuenow="<%= weight_actuel%>" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+<% else %>
+  <div class="progress w-100">
+    <div class="progress-bar bg-success" role="progressbar" style="width: <%= weight_actuel%>%" aria-valuenow="<%= weight_actuel%>" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+<% end %>
+  (<%= weight_actuel %>%)

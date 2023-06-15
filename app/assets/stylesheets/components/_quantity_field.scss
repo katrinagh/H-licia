@@ -1,0 +1,19 @@
+.quantity-field {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    width: 50px;
+    height: 80px;
+    text-align: center;
+    border: none;
+    filter: drop-shadow(1px 4px 5px rgba(0, 0, 0, 0.25));
+    border-radius: 5px;
+    border: 1px solid #2AAF4F
+}
+
+.select-button {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #2AAF4F
+}

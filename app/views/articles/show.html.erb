@@ -39,16 +39,41 @@
 
     <%= form_with(url: orders_add_path) do |f|%>
         <%= f.hidden_field :id, value: @article.id %>
-        <%= f.number_field :quantity, value: 0, min: 1 %>
+        <div class="m-2">
+          <%= f.select :quantity, 1..5, {}, class: "select-button"%>
+        </div>
         <%= f.submit "Add to cart", class: "btn_magic fs-3 d-flex justify-content-center text-white" %>
+
+      <!-- La jauge de poid -->
+      <div class="d-flex justify-content-center">
+        <%= render "shared/jauge" %>
+      </div>
+
+    
         <% end %>
 
-    </div>
-</div>
 
-        <% if @order.id.nil? %>
-        <%= "Your cart is empty" %>
+
+  </div>
+
+        <% if @order.nil? %>
+        <%= "Your cart is empty" %> 
         <% else %>
         <%= link_to "Go to cart", order_path(@order) %>
         <% end %>
-</div>
+        
+</div> 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#add-to-cart-btn').click(function(e) {
+      e.preventDefault(); // Prevent the default form submission
+
+      // Show the popup message
+      alert('Item added to cart');
+
+      // Submit the form
+      $(this).closest('form').submit();
+    });
+  });
+</script>

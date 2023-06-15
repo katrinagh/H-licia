@@ -13,7 +13,7 @@
 
 
 
-    <% if @order.id.nil?  %>
+    <% if @order.nil?  %>
       <%= link_to stores_path %>
     <% else %>
       <%= link_to order_path(@order), class: "cart" do %>
@@ -23,9 +23,9 @@
     
 
 
-    </span>
+    <%# </span>
     <%= link_to user_session_path, class: "menu" do %>
-      <span class="navbar-toggler-icon"></span>
+      <%# <span class="navbar-toggler-icon"></span>
     <% end %>
     </div>
   </div>

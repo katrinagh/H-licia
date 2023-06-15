@@ -7,7 +7,7 @@
     <% end %>
 
     <% if @order.confirmed %>
-      <%= link_to confirmation_order, class: "helice" do %>
+      <%= link_to confirmation_order_path, class: "helice" do %>
         <span class="navbar-helice-icon">
         <%= image_tag("helice.png", class: "helice") %>
         </span>
@@ -15,8 +15,6 @@
     <% else %>
       <button class= "helice, disabled"> </button>
     <% end %>
-
-
 
     <% if @order.id.nil?  %>
       <button class= "navbar-cart-icon, disabled"> </button>
@@ -26,12 +24,6 @@
       <% end %>
     <% end %>
 
-
-
-    <%# </span>
-    <%= link_to user_session_path, class: "menu" do %>
-      <%# <span class="navbar-toggler-icon"></span>
-    <% end %>
     </div>
   </div>
 </nav>

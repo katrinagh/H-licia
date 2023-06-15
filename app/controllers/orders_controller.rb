@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :set_cart_to_confirmed, only: :confirmation
+
   def index
     @orders = Order.all
   end
@@ -55,8 +57,14 @@ class OrdersController < ApplicationController
         lat: @order.latitude,
         lng: @order.longitude,
         info_window_html: render_to_string(partial:
-        'info_window_order', locals: { order: @order }),
+        'info_window', locals: { order: @order }),
         marker_html: render_to_string(partial: 'marker_order', locals: { order: @order })
       }
+  end
+
+  private
+
+  def set_cart_to_confirmed
+    @order.confirmed = true
   end
 end

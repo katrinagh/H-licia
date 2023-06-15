@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :orders do
     member do
       get :checkout
+      get :confirmation
     end
   end
   post 'orders/add'

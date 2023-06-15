@@ -16,7 +16,9 @@
     <%= render "shared/flashes" %>
 
     <!-- Logo et nom de marque ici -->
-    <%= image_tag("logo1.png", width: "200", class:"my-4") %>
+    <%= link_to stores_path, style: "text-decoration: none" do %>
+      <%= image_tag("logo1.png", width: "200", class:"my-4") %>
+    <% end %>
 
     <span class="notice"><%= notice %></span>
     <span class="alert"><%= alert %></span>

@@ -9,10 +9,10 @@
 
 <% order_total = @order.article_orders.sum(&:total) %>
 <% fee = @order.article_orders.first.article.store.delivery_fees %>
-<h4>Total Price of Articles: <span style="color: black;"> <%= order_total %></span> CHF</h4>
-<p>Delivery fee:  <span style="color: black;"> <%= fee %></span> CHF</p>
-<h4>Total Price: <span style="color: black;"><%= order_total + fee %></span> CHF</h4>
-
+<% total = order_total + fee %>
+<h4>Total Price of Articles: <span style="color: black;"> <%= sprintf('%.2f', order_total.to_f) %></span> CHF</h4>
+<p>Delivery fee:  <span style="color: black;"> <%= sprintf('%.2f', fee.to_f) %></span> CHF</p>
+<h4>Total Price: <span style="color: black;"><%= sprintf('%.2f', total.to_f) %></span> CHF</h4>
 
 
 <div class="line"></div>

@@ -1,36 +1,38 @@
 <div class="container" data-controller="insert-in-cart">
-    <div>
-        <% i = 0 %>
-            <% @order.article_orders.each do |article_order| %>
-                <% article = article_order.article %>
-                    <div class="d-flex justify-content-between align-items-start mb-4" data-insert-in-cart-target="items">
-                        <div>
-                            <h3 class="fs-4 title text-dark"><%= article.title %></h3>
-                            <div id="price<%= i %>" class="main pb-2"><%= sprintf('%.2f', article.price.to_f) %> CHF</div>
-                            <span class="text-secondary"><%= article.description.truncate(24)%></span>
-                        </div>
-                        <div >
-                            <%= image_tag(article.image_url, width: "120", height: "120" ) %>
-                        </div>
-                        <%= form_with url: orders_add_path, data: {action: "submit->insert-in-cart#send", insert_in_cart_target: "form", insert_in_cart_id_param: i, insert_in_cart_num_param: article_order.quantity } do |f|  %>
-                            <%= f.hidden_field :id, value: article.id %>
-                            <%= f.number_field :quantity, value: article_order.quantity, min: 0, data: {action: "input->insert-in-cart#retrieveQuantity"} %>
-                            <%= f.submit "Add to cart", class: "btn_magic fs-3 d-flex justify-content-center text-white"  %>
-                        <% end %>
-
-                        <%= form_with(url: orders_remove_path) do |f|%>
-                            <%= f.hidden_field :id, value: article_order.id %>
-                            <%= f.submit "X", class: "btn-danger fs-3 d-flex justify-content-center" %>
-                        <% end %>
-                        <strong  >Total : </strong>
-                            <p data-insert-in-cart-target="total"><%= sprintf('%.2f',article_order.total.to_f) %> </p>
-                    </div>
-                <% i += 1 %>
+  <div>
+    <% i = 0 %>
+    <% @order.article_orders.each do |article_order| %>
+      <% article = article_order.article %>
+      <div class="d-flex mb-4 flex-column" data-insert-in-cart-target="items">
+        <div>
+          <div class="item-container">
+            <%= image_tag(article.image_url, width: "120", height: "120") %>
+            <h3 class="d-flex align-items-end flex-column fs-4 title text-dark"><%= article.title %></h3>
+          </div>
+        </div>
+        <%= form_with url: orders_add_path, data: {action: "submit->insert-in-cart#send", insert_in_cart_target: "form", insert_in_cart_id_param: i, insert_in_cart_num_param: article_order.quantity } do |f|  %>
+          <%= f.hidden_field :id, value: article.id %>
+          <div class="bottom">
+            <div class="buttons">
+              <%= f.number_field :quantity, value: article_order.quantity, min: 0, data: {action: "input->insert-in-cart#retrieveQuantity"}, class: "input-quantity" %>
+              <%= f.submit "Add", class: "add-btn fs-3 d-flex justify-content-center"  %>
             <% end %>
-            <div>
-                <h5>Total cart amount: <span data-insert-in-cart-target="endtotal"><%= sprintf('%.2f', @order.total.to_f) %></span></h5>
+            <%= form_with(url: orders_remove_path) do |f|%>
+              <%= f.hidden_field :id, value: article_order.id %>
+              <%= f.submit "X", class: "delete btn-success fs-3 d-flex justify-content-center " %>
+            <% end %>
             </div>
-
-
+            <div class="d-flex align-items-end flex-column">
+              <div class="main pb-2 text-black">Item's Price <span id="price<%= i %>"><%= sprintf('%.2f', article.price.to_f) %> CHF</span></div>
+              <p class="totale"><strong>Total :</strong><span data-insert-in-cart-target="total"><%= sprintf('%.2f',article_order.total.to_f) %> </span></p>
+            </div>
+          </div>
+        </div>
+        <% i += 1 %>
+    <% end %>
+      <div>
+        <h5>Total cart amount: <span data-insert-in-cart-target="endtotal"><%= sprintf('%.2f', @order.total.to_f) %></span></h5>
+      </div>
     </div>
+  </div>
 </div>

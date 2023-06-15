@@ -1,0 +1,75 @@
+.item-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.h3{
+  margin-right: auto;
+}
+
+.item-container img {
+  margin-right: 10px;
+}
+
+.add-btn{
+  height: 40px;
+  width: 50px;
+  color: white;
+  background-color: rgb(48 ,140 ,124);
+  border: 1px solid rgb(28, 84, 75);
+  border-radius: 4px;
+}
+
+.input-quantity {
+  height: 40px;
+  width: 35px;
+  color: rgb(48 ,140 ,124);
+  border: 1px solid rgb(48, 140, 124);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-right: 5px;
+}
+
+.delete{
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40px;
+  width: 35px;
+  color: rgb(48 ,140 ,124);
+  border: 1px solid rgb(48 ,140 ,124);
+  border-radius: 4px;
+}
+
+.buttons{
+  display: flex;
+  align-items: center;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.prices{
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-left: auto;
+}
+
+.text-black {
+  color: black;
+}
+
+.totale{
+  color: rgb(48 ,140 ,124);
+}

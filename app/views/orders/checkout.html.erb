@@ -10,16 +10,20 @@
 <% order_total = @order.article_orders.sum(&:total) %>
 <% fee = @order.article_orders.first.article.store.delivery_fees %>
 <% total = order_total + fee %>
-<h4>Total Price of Articles: <span style="color: black;"> <%= sprintf('%.2f', order_total.to_f) %></span> CHF</h4>
-<p>Delivery fee:  <span style="color: black;"> <%= sprintf('%.2f', fee.to_f) %></span> CHF</p>
-<h4>Total Price: <span style="color: black;"><%= sprintf('%.2f', total.to_f) %></span> CHF</h4>
+<h4>Total Price of Articles : <span style="color: black;"> <%= sprintf('%.2f', order_total.to_f) %></span> CHF</h4>
+<p>Delivery fees :  <span style="color: black;"> <%= sprintf('%.2f', fee.to_f) %></span> CHF</p>
+<h4>Total Price : <span style="color: black;"><%= sprintf('%.2f', total.to_f) %></span> CHF</h4>
 
 
 <div class="line"></div>
 
-<h2>Payment</h2>
-<div class="cards">
-  <p>VISA: **** **** **** 2424</p>
+<%= render 'credit_card' %>
+
+
+
+
+
+
 <%# <ul class="nav-item dropdown">
   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false">
     <%= image_tag("add.png", alt: "Add", class: "dropdown-icon") %>

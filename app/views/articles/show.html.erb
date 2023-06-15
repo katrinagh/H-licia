@@ -10,7 +10,7 @@
     <p class="p-1">></p>
     <p class="text-primary p-1"><%= @article.title %></p>
   </div>
-  <div class="image_p" style="background-image: url(<%= image_path(@article.image_url) %>)">
+  <div class="image_article" style="background-image: url(<%= image_path(@article.image_url) %>)">
     <div class="d-flex justify-content-between">
       <div>
         <%= link_to store_path(@article.store), style: "text-decoration: none" do %>
@@ -20,49 +20,35 @@
     </div>
   </div>
 
-  <div>
-    <h1 class="mt-5 fw-bolder"><%= @article.title %></h1>
+  <div class="titles_article">
+    <h1 class="title_article fw-bolder"><%= @article.title %></h1>
   </div>
 
-  <div>
-    <h4 class="mt-4 mb-3 fw-bolder"><%= @article.category %></h4>
-  </div>
-
-  <div class="main mb-3 fw-bolder">
+  <div class="price_article"><strong>Price: </strong>
     <%= sprintf('%.2f', @article.price.to_f) %> CHF
+    <p class="category_article"><strong>Category: </strong><%= @article.category %></p>
   </div>
 
-  <div>
-    <strong><h4>Description:</h4></strong>
+  <div class="description_article">
+    <strong><h4 class="desc">Description</h4></strong>
     <p><%= @article.description %></p>
   </div>
 
-    <%= form_with(url: orders_add_path) do |f|%>
-        <%= f.hidden_field :id, value: @article.id %>
-        <div class="m-2">
-          <%= f.select :quantity, 1..5, {}, class: "select-button"%>
-        </div>
-       <%= f.submit "Add to cart", id: "add-to-cart-btn", class: "btn_magic fs-3 d-flex justify-content-center text-white" %>
-
-      <!-- La jauge de poid -->
-      <div class="d-flex justify-content-center">
-        <%= render "shared/jauge" %>
-      </div>
-
-    
-        <% end %>
-
-
-
+<%= form_with(url: orders_add_path) do |f| %>
+  <%= f.hidden_field :id, value: @article.id %>
+  <div class="buttons_articles">
+    <p class="quantity_articles">Quantity:</p>
+    <div class="m-2"><%= f.select :quantity, 1..5, {}, class: "articles_select select-button" %></div>
+    <%= f.submit "Add to cart", id: "add-to-cart-btn", class: "articles_button btn_magic fs-3 d-flex justify-content-center text-white" %>
   </div>
+<% end %>
 
-        <% if @order.nil? %>
-        <%= "Your cart is empty" %> 
-        <% else %>
-        <%= link_to "Go to cart", order_path(@order) %>
-        <% end %>
-        
-</div> 
+<!-- La jauge de poid -->
+  <div class="jauge_articles d-flex justify-content-center">
+    <%= render "shared/jauge", article: @article %>
+  </div>
+  </div>
+</div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(document).ready(function() {

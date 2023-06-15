@@ -25,7 +25,7 @@
     <h4 class="category_article fw-bolder"><%= @article.category %></h4>
   </div>
 
-  <div class="main mb-3 fw-bolder">
+  <div class="price_article"><strong>Price:</strong>
     <%= sprintf('%.2f', @article.price.to_f) %> CHF
   </div>
 
@@ -36,11 +36,11 @@
 
     <%= form_with(url: orders_add_path) do |f|%>
         <%= f.hidden_field :id, value: @article.id %>
+        <div class="buttons_articles"></div>
+        <%= f.submit "Add to cart", id: "add-to-cart-btn", class: "btn_magic fs-3 d-flex justify-content-center text-white" %>
         <div class="m-2">
           <%= f.select :quantity, 1..5, {}, class: "select-button"%>
         </div>
-        <%= f.submit "Add to cart", class: "btn_magic fs-3 d-flex justify-content-center text-white" %>
-
       <!-- La jauge de poid -->
       <div class="d-flex justify-content-center">
         <%= render "shared/jauge" %>

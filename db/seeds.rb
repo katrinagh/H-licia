@@ -6,9 +6,12 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 # creating users
-puts 'Cleaning database...'
-Store.destroy_all
+puts 'Cleaning article order...'
+ArticleOrder.destroy_all
+puts 'Cleaning articles...'
 Article.destroy_all
+puts 'Cleaning stores...'
+Store.destroy_all
 
 i = 0
 titles = ['Amavita', 'SUN STORE', 'PharmaSuisse', 'BENU', 'TopPharm', 'Pharmacie Bien-Être',

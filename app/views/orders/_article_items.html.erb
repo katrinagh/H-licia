@@ -7,8 +7,15 @@
         <div>
           <div class="item-container">
             <%= image_tag(article.image_url, width: "120", height: "120") %>
-            <h3 class="d-flex align-items-end flex-column fs-4 title text-dark"><%= article.title %></h3>
+            <h3 class="d-flex align-items-end flex-column fs-4 title text-dark">
+              <%= article.title %>
+              <div class="item_price pb-2 text-black">Item's Price:
+                <span id="price<%= i %>"><%= sprintf('%.2f', article.price.to_f) %> CHF
+                </span>
+              </div>
+            </h3>
           </div>
+
         </div>
         <%= form_with url: orders_add_path, data: {action: "submit->insert-in-cart#send", insert_in_cart_target: "form", insert_in_cart_id_param: i, insert_in_cart_num_param: article_order.quantity } do |f|  %>
           <%= f.hidden_field :id, value: article.id %>
@@ -23,15 +30,15 @@
             <% end %>
             </div>
             <div class="d-flex align-items-end flex-column">
-              <div class="main pb-2 text-black">Item's Price <span id="price<%= i %>"><%= sprintf('%.2f', article.price.to_f) %> CHF</span></div>
-              <p class="totale"><strong>Total: </strong><span data-insert-in-cart-target="total"><%= sprintf('%.2f',article_order.total.to_f) %> </span></p>
+              
+              <p class="totale"><strong>Total: </strong><span data-insert-in-cart-target="total"><%= sprintf('%.2f',article_order.total.to_f) %> CHF</span></p>
             </div>
           </div>
         </div>
         <% i += 1 %>
       <% end %>
       <div>
-        <h5>Total cart amount: <span data-insert-in-cart-target="endtotal"><%= sprintf('%.2f', @order.total.to_f) %></span></h5>
+        <h5 id="cart_total">Total cart amount: <span data-insert-in-cart-target="endtotal"><%= sprintf('%.2f', @order.total.to_f) %> CHF</span></h5>
       </div>
     </div>
   </div>

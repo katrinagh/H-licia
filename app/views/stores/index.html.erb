@@ -13,6 +13,11 @@
               class: "py-2 form-control rounded-pill main_grey position-arelative ps-5",
               placeholder: "Pharmacys, Articles, etc..."
           %>
+          <div id="search_result" style="color: grey">
+            <% if params[:query] %>
+              <p> You found <%=  @stores.count  %> stores </p>
+            <% end %>
+          </div>
       <% end %>
     </div>
   </div>

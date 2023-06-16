@@ -93,7 +93,7 @@
 
 
   <!-- (faire l'itération pour la 1er catégorie Cooling) -->
-  <h4 class="mb-4 mt-4 fs-1" id="<%=categorys[0]%>"><strong> <%=categorys[0]%> </strong></h4>
+  <h4 class="mb-4 mt-4 fs-1 title_category" id="<%=categorys[0]%> category"><strong> <%=categorys[0]%> </strong></h4>
 
   <% @articles.each do |article| %>
     <%= link_to article_path(article), style: "text-decoration: none" do %>
@@ -114,7 +114,7 @@
   <%end%>
 
   <!-- (faire l'itération pour la 2eme catégorie skin & hair) -->
-  <h4 class="mb-4 mt-4 fs-1" id="<%=categorys_underscore[1]%>"><strong> <%=categorys[1]%> </strong></h4>
+  <h4 class="mb-4 mt-4 fs-1 title_category" id="<%=categorys_underscore[1]%>"><strong> <%=categorys[1]%> </strong></h4>
 
   <% @articles.each do |article| %>
     <%= link_to article_path(article), style: "text-decoration: none" do %>
@@ -135,7 +135,7 @@
   <%end%>
 
   <!-- (faire l'itération pour la 3eme catégorie) -->
-  <h4 class="mb-4 mt-4 fs-1" id="<%=categorys_underscore[2]%>"><strong> <%=categorys[2]%> </strong></h4>
+  <h4 class="mb-4 mt-4 fs-1 title_category" id="<%=categorys_underscore[2]%>"><strong> <%=categorys[2]%> </strong></h4>
 
     <% @articles.each do |article| %>
     <%= link_to article_path(article), style: "text-decoration: none" do %>
@@ -156,7 +156,7 @@
   <%end%>
 
   <!-- (faire l'itération pour la 4eme catégorie) -->
-  <h4 class="mb-4 mt-4 fs-1" id="<%=categorys_underscore[3]%>"><strong> <%=categorys[3]%> </strong></h4>
+  <h4 class="mb-4 mt-4 fs-1 title_category" id="<%=categorys_underscore[3]%>"><strong> <%=categorys[3]%> </strong></h4>
 
     <% @articles.each do |article| %>
     <%= link_to article_path(article), style: "text-decoration: none" do %>
@@ -177,7 +177,7 @@
   <%end%>
 
   <!-- (faire l'itération pour la 5eme catégorie) -->
-  <h4 class="mb-4 mt-4 fs-1" id="<%=categorys_underscore[4]%>"><strong> <%=categorys[4]%> </strong></h4>
+  <h4 class="mb-4 mt-4 fs-1 title_category" id="<%=categorys_underscore[4]%>"><strong> <%=categorys[4]%> </strong></h4>
 
     <% @articles.each do |article| %>
     <%= link_to article_path(article), style: "text-decoration: none" do %>

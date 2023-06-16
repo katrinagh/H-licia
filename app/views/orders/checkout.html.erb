@@ -23,6 +23,8 @@
 
     <div class="line"></div>
 
+    <h1 class="mb-5">Payment</h1>
+
     <% order_total = @order.article_orders.sum(&:total) %>
     <% fee = @order.article_orders.first.article.store.delivery_fees %>
     <% total = order_total + fee %>
@@ -38,12 +40,6 @@
         <p class="d-flex justify-content-end fs-5 fw-bold main"> <%= sprintf('%.2f', total.to_f) %> CHF</p>
       </div>
     </div>
-
-    <!--
-    <h3>Total Price of Articles : <span style="color: black;"> <%= sprintf('%.2f', order_total.to_f) %></span> CHF</h3>
-    <p>Delivery fees :  <span style="color: black;"> <%= sprintf('%.2f', fee.to_f) %></span> CHF</p>
-    <h3>Total Price : <span style="color: black;"><%= sprintf('%.2f', total.to_f) %></span> CHF</h3>
-    -->
 
     <div class="line"></div>
 

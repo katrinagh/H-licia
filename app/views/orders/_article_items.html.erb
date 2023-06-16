@@ -29,9 +29,9 @@
               <%= f.submit "X", class: "delete btn-success fs-3 d-flex justify-content-center " %>
             <% end %>
             </div>
-            <div class="d-flex align-items-end flex-column">
-              
-              <p class="totale"><strong>Total: </strong><span data-insert-in-cart-target="total"><%= sprintf('%.2f',article_order.total.to_f) %> CHF</span></p>
+            <div class="d-flex align-items-end flex-column main">
+
+              <p class="totale">Total: <span data-insert-in-cart-target="total"><%= sprintf('%.2f',article_order.total.to_f) %> CHF</span></p>
             </div>
           </div>
         </div>

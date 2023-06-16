@@ -2,7 +2,7 @@
 <% if @order.article_orders.count > 0 %>
     <%= render 'article_items' %>
     <%= link_to "Order", checkout_order_path(@order), class: "btn_magic fs-3 d-flex justify-content-center text-white", style: "text-decoration: none;" %>
-    <%= link_to "Add Other Articles", store_path(@order.article_orders.first.article.store.id), class: "order btn_add fs-3 d-flex justify-content-center text-black", style: "text-decoration: none;" %>
+    <%= link_to "Add other articles", store_path(@order.article_orders.first.article.store.id), class: "order btn_add fs-3 d-flex justify-content-center text-black", style: "text-decoration: none;" %>
 <% else %>
     <%= link_to "Add Articles", stores_path, class: "other_article btn_add fs-3 d-flex justify-content-center text-black", style: "text-decoration: none;" %>
 <% end %>

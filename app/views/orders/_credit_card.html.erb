@@ -2,29 +2,31 @@
   <div class="row d-flex justify-content-left">
     <div class="col-sm-8">
       <div class="card rounded-3">
-        <div class="card-body">
+        <div class="card-body" style="margin-left: 10px">
           <div class="text-left mb-4">
             <h1>Payment</h1>
           </div>
-          <span class="fw-bold mb-4 pb-2">Saved cards:</span>
+          <div>
+          <span class="fw-bold mb-4 pb-4">Saved cards:</span>
+          </div>
 
           <%# 1ère carte de crédit fax simile MASTERCARD  %>
 
-          <label class="form-label" for="formControlLgXc">Card Number</label>
-          <div class="d-flex flex-row align-items-center mb-4">
-            <input class="form-check-input p-2 m-1" type="radio" name="radioNoLabel" id="radioNoLabel1"
-                    value="" aria-label="..." checked />
-            <img class="img-fluid" src="https://img.icons8.com/color/48/000000/mastercard-logo.png" />
-            <div class="flex-fill mx-3">
-              <div class="form-outline">
-                <input type="text" id="formControlLgXc" class="form-control form-control-md"
-                  value="**** **** **** 3193" />
+            <label class="form-label" for="formControlLgXc" style="margin-left: 95px; padding-top:20px;">Card Number</label>
+            <div class="d-flex flex-row align-items-center mb-2">
+              <input class="form-check-input p-2 m-1" type="radio" name="radioNoLabel" id="radioNoLabel1" value="" aria-label="..." checked />
+              <img class="img-fluid" src="https://img.icons8.com/color/48/000000/mastercard-logo.png" />
+              <div class="form-outline flex-fill mx-3">
+                <input type="text" id="formControlLgXc" class="form-control form-control-md" value="**** **** **** 3193" />
               </div>
             </div>
-          </div>
+          
+
+
+
           <!-- 2ème carte de crédit fax simile VISA -->
-          <label class="form-label" for="formControlLgXs">Card Number</label>
-          <div class="d-flex flex-row align-items-center mb-4">
+          <label class="form-label" for="formControlLgXs" style="margin-left: 95px; padding-top:20px;">Card Number</label>
+          <div class="d-flex flex-row align-items-center mb-2">
               <input class="form-check-input p-2 m-1" type="radio" name="radioNoLabel" id="radioNoLabel2"
                     value="" aria-label="..." />
             <img class="img-fluid" src="https://img.icons8.com/color/48/000000/visa.png" />

@@ -44,8 +44,17 @@ Yarn install
 ```
 
 creation of structure:
+
 ```
 rails db:create db:migrate
 ```
 
 -->
+
+![screen_helicia_1](https://github.com/katrinagh/Helicia/assets/130440038/463b6a81-5bac-402c-99a9-4b81dbf0c226)
+
+![screen_helicia_2](https://github.com/katrinagh/Helicia/assets/130440038/a2e70668-76cd-401a-96b7-683ab3d041d0)
+
+![screen_helicia_3](https://github.com/katrinagh/Helicia/assets/130440038/c92cb39f-becf-4523-be62-193fd0f223f4)
+
+

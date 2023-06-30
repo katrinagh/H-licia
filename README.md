@@ -21,7 +21,7 @@ And lots of other ideas but for lack of time, impossible to implement ... 😉
 
 <h2>Setup ⚙</h2>
 
-Soon..
+In-progress..
 <!--
 **⚠ Programming language: Ruby on Rails 7**
 

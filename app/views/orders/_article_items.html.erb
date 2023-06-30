@@ -37,8 +37,13 @@
         </div>
         <% i += 1 %>
       <% end %>
-      <div>
-        <h5 id="cart_total">Total cart amount: <span data-insert-in-cart-target="endtotal"><%= sprintf('%.2f', @order.total.to_f) %> CHF</span></h5>
+      <div class="d-flex justify-content-between pt-2">
+        <div>
+          <h5>Cart total: </h5>
+        </div>
+        <div class="d-flex justify-content-end main">
+          <h5 data-insert-in-cart-target="endtotal"><%= sprintf('%.2f', @order.total.to_f) %> CHF</h5></h5>
+        </div>
       </div>
     </div>
   </div>
